@@ -38,7 +38,7 @@ class Image {
     /**
      * The raw data of the thumbnail of the image
      * @var resource
-     * @ORM\Column(type="binary")
+     * @ORM\Column(type="blob")
      */
     protected $thumbnail;
 
