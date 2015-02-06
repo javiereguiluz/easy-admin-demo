@@ -1,0 +1,7 @@
+easy_admin:
+    entities:
+        - AppBundle\Entity\Category
+        - AppBundle\Entity\Image
+        - AppBundle\Entity\Order
+        - AppBundle\Entity\OrderItem
+        - AppBundle\Entity\Product
