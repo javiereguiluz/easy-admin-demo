@@ -12,7 +12,6 @@ How to install this project
      credentials to acces a database for this demo.
   4. `php app/console doctrine:database:create`
   5. `php app/console doctrine:schema:create`
-  6. `php app/console server:run`
-  7. Browse `http://127.0.0.1:8000/admin/`
-
-**The backend is still empty because we haven't prepared the data fixtures yet**.
+  6. `php app/console doctrine:fixtures:load --append`
+  7. `php app/console server:run`
+  8. Browse `http://127.0.0.1:8000/admin/`
