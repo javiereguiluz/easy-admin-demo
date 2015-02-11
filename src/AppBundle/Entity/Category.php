@@ -21,7 +21,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="category")
  * @ORM\Entity
  */
-class Category {
+class Category
+{
     /**
      * The identifier of the category
      * @var integer
@@ -30,23 +31,26 @@ class Category {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id = null;
+
     /**
      * The category name
      * @var string
      * @ORM\Column(type="string")
      */
     protected $name;
+
     /**
      * Product in the category
      * @var Product[]
      * @ORM\ManyToMany(targetEntity="Product", mappedBy="categories")
      **/
     protected $products;
+
     /**
      * The category parent
      * @var Category
      * @ORM\OneToOne(targetEntity="Category")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      **/
     protected $parent;
 
@@ -60,22 +64,20 @@ class Category {
         $this->products = new ArrayCollection();
     }
 
-    /**
-     * Add a product in the category
-     * @param $product Product The product to associate
-     */
-    public function addProduct($product) {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-        }
+    /** {@inheritdoc} */
+    function __toString()
+    {
+        return $this->getName();
     }
 
     /**
-     * @param Product $product
+     * Get the id of the category.
+     * Return null if the category is new and not saved
+     * @return int
      */
-    public function removeProduct($product)
+    public function getId()
     {
-        $this->products->removeElement($product);
+        return $this->id;
     }
 
     /**
@@ -115,16 +117,6 @@ class Category {
     }
 
     /**
-     * Get the id of the category.
-     * Return null if the category is new and not saved
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Return all product associated to the category
      * @return Product[]
      */
@@ -142,9 +134,21 @@ class Category {
         $this->products = new ArrayCollection($products);
     }
 
-    /** {@inheritdoc} */
-    function __toString()
+    /**
+     * Add a product in the category
+     * @param $product Product The product to associate
+     */
+    public function addProduct($product) {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+        }
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function removeProduct($product)
     {
-        return $this->getName();
+        $this->products->removeElement($product);
     }
 }
