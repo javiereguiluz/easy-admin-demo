@@ -18,3 +18,20 @@ easy_admin:
                     - enabled
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - tags
+            show:
+                fields:
+                    - id
+                    - name
+                    - { property: 'ean', type: 'string' }
+                    - description
+                    - price
+                    - features
+                    - enabled
+                    - createdAt
+            form:
+                fields:
+                    - { property: name, class: 'input-lg' }
+                    - { property: price, type: 'number', help: 'Prices are always in euros' }
+                    - { property: 'ean', label: 'EAN', help: 'EAN 13 valid code. Leave empty if unknown.' }
+                    - enabled
+                    - description
