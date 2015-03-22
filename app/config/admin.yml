@@ -1,7 +1,20 @@
 easy_admin:
+    site_name: 'ACME Backend'
     entities:
-        - AppBundle\Entity\Category
-        - AppBundle\Entity\Image
-        - AppBundle\Entity\Order
-        - AppBundle\Entity\OrderItem
-        - AppBundle\Entity\Product
+        Category: AppBundle\Entity\Category
+        Image: AppBundle\Entity\Image
+        Purchase: AppBundle\Entity\Purchase
+        PurchaseItem:
+            class: AppBundle\Entity\PurchaseItem
+            label: 'Purchase Item'
+        Product:
+            class: AppBundle\Entity\Product
+            list:
+                fields:
+                    - id
+                    - name
+                    - { property: 'price', format: '%.2f' }
+                    - { property: 'ean', label: 'EAN13', type: 'string' }
+                    - enabled
+                    - { property: 'createdAt', format: 'j / M / Y' }
+                    - tags
