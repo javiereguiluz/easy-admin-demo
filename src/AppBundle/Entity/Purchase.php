@@ -15,26 +15,27 @@ use AppBundle\Model\Shipment;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Order
+ * Class Purchase
  *
  * @author MacFJA
  *
- * @ORM\Table(name="order")
+ * @ORM\Table(name="purchase")
  * @ORM\Entity
  */
-class Order {
+class Purchase
+{
     /**
-     * The order increment id. This identifier will be use in all communication between teh customer and the store.
+     * The purchase increment id. This identifier will be use in all communication between the customer and the store.
      * @var integer
-     * @ORM\Column(type="integer", name="increment_id")
+     * @ORM\Column(type="integer", name="id", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $incrementId = null;
+    public $id = null;
 
     /**
-     * The Unique id of the order
+     * The Unique id of the purchase
      * @var string
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="guid")
      */
     public $guid = null;
@@ -73,25 +74,26 @@ class Order {
      * @ORM\Column(type="json_array")
      */
     public $billingAddress = array();
+
     /**
-     * Items that have been ordered
+     * Items that have been purchased
      * @var OrderItem[]
-     * @ORM\ManyToMany(targetEntity="OrderItem")
-     * @ORM\JoinTable(name="order_order_item",
-     *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="guid")},
+     * @ORM\ManyToMany(targetEntity="PurchaseItem")
+     * @ORM\JoinTable(name="purchase_purchase_item",
+     *      joinColumns={@ORM\JoinColumn(name="purchase_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)}
      *      )
      */
-    public $orderedItems;
+    public $purchasedItems;
 
     /**
-     * Constructor of the Order class.
+     * Constructor of the Purchase class.
      * (Initialize some fields)
      */
     function __construct()
     {
-        //Initialize orderedItems as a Doctrine Collection
-        $this->orderedItems = new ArrayCollection();
+        //Initialize purchasedItems as a Doctrine Collection
+        $this->purchasedItems = new ArrayCollection();
         //Initialize purchaseAt to now (useful for new order, override by existing one)
         $this->purchaseAt = new \DateTime();
         $this->deliverySelected = new \DateTime('+2 days');
@@ -136,39 +138,30 @@ class Order {
     }
 
     /**
-     * Set the order increment id
-     * @param int $incrementId
-     */
-    public function setIncrementId($incrementId)
-    {
-        $this->incrementId = $incrementId;
-    }
-
-    /**
-     * Get the order increment id
+     * Get the purchase id
      * @return int
      */
-    public function getIncrementId()
+    public function getId()
     {
-        return $this->incrementId;
+        return $this->id;
     }
 
     /**
      * Set all items ordered
-     * @param OrderItem[] $orderedItems
+     * @param OrderItem[] $purchasedItems
      */
-    public function setOrderedItems($orderedItems)
+    public function setPurchasedItems($purchasedItems)
     {
-        $this->orderedItems = $orderedItems;
+        $this->purchasedItems = $purchasedItems;
     }
 
     /**
      * Get all ordered items
      * @return OrderItem[]
      */
-    public function getOrderedItems()
+    public function getPurchasedItems()
     {
-        return $this->orderedItems;
+        return $this->purchasedItems;
     }
 
     /**
@@ -238,6 +231,6 @@ class Order {
     /** {@inheritdoc} */
     function __toString()
     {
-        return 'Order #'.$this->getIncrementId();
+        return 'Purchase #'.$this->getIncrementId();
     }
 }

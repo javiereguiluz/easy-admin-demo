@@ -13,14 +13,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class OrderItem
+ * Class PurchaseItem
  *
  * @author MacFJA
  *
- * @ORM\Table(name="order_item")
+ * @ORM\Table(name="purchase_item")
  * @ORM\Entity
  */
-class OrderItem {
+class PurchaseItem {
     /**
      * The identifier of the image
      * @var integer
@@ -29,18 +29,21 @@ class OrderItem {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id = null;
+
     /**
      * The ordered quantity
      * @var integer
      * @ORM\Column(type="smallint")
      */
     protected $quantity = 1;
+
     /**
      * The tax rate to apply on the product
      * @var string
      * @ORM\Column(type="decimal", name="tax_rate")
      */
     protected $taxRate = 0.21;
+
     /**
      * The ordered product
      * @var Product
