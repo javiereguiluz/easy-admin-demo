@@ -30,6 +30,7 @@ class Product {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id = null;
+
     /**
      * The creation date of the product
      * @var \DateTime
