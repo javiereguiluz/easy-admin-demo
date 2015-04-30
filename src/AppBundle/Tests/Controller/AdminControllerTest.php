@@ -3,16 +3,19 @@
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
-class DefaultControllerTest extends WebTestCase
+class AdminControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testIndexRedirectsToTheFirstEntityListing()
     {
         $client = static::createClient();
+        $client->request('GET', '/admin/');
 
-        $crawler = $client->request('GET', '/app/example');
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertTrue($crawler->filter('html:contains("Homepage")')->count() > 0);
+        $this->assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertEquals(
+            '/admin/?action=list&entity=Category',
+            $client->getResponse()->getTargetUrl()
+        );
     }
 }
