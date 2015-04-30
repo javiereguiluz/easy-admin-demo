@@ -10,13 +10,15 @@ class CategoryEntityTest extends WebTestCase
     public function testListViewPageTitle()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         $this->assertEquals('Product Categories', trim($crawler->filter('h1.title')->text()));
     }
 
     public function testListViewSearchAction()
     {
+        $this->markTestSkipped("It requires the latest not-yet-released stable version");
+
         $hiddenParameters = array(
             'view' => 'list',
             'action' => 'search',
@@ -26,7 +28,7 @@ class CategoryEntityTest extends WebTestCase
         );
 
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         $this->assertEquals('Look for Categories', $crawler->filter('#content-search input[type=search]')->attr('placeholder'));
 
@@ -42,17 +44,17 @@ class CategoryEntityTest extends WebTestCase
     public function testListViewNewAction()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         $this->assertEquals('New Categories', trim($crawler->filter('#content-actions a.btn')->text()));
         $this->assertEquals('fa fa-plus-circle', $crawler->filter('#content-actions a.btn i')->attr('class'));
         $this->assertEquals('/admin/?entity=Category&action=new&view=list', $crawler->filter('#content-actions a.btn')->attr('href'));
     }
-    
+
     public function testListViewTableIdColumn()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         $this->assertEquals('ID', trim($crawler->filter('table th[data-property-name="id"]')->text()),
             'The ID entity property is very special and we uppercase it automatically to improve its readability.'
@@ -64,7 +66,7 @@ class CategoryEntityTest extends WebTestCase
         $columnLabels = array('ID', 'Label', 'Parent category', 'Actions');
 
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         foreach ($columnLabels as $i => $label) {
             $this->assertEquals($label, trim($crawler->filter('.table thead th')->eq($i)->text()));
@@ -76,7 +78,7 @@ class CategoryEntityTest extends WebTestCase
         $columnAttributes = array('id', 'name', 'parent');
 
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         foreach ($columnAttributes as $i => $attribute) {
             $this->assertEquals($attribute, trim($crawler->filter('.table thead th')->eq($i)->attr('data-property-name')));
@@ -86,7 +88,7 @@ class CategoryEntityTest extends WebTestCase
     public function testListViewDefaultTableSorting()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         $this->assertCount(1, $crawler->filter('.table thead th[class*="sorted"]'), 'Table is sorted only by one column.');
 
@@ -98,7 +100,7 @@ class CategoryEntityTest extends WebTestCase
     public function testListViewTableContents()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         $this->assertCount(15, $crawler->filter('.table tbody tr'));
     }
@@ -108,7 +110,7 @@ class CategoryEntityTest extends WebTestCase
         $columnAttributes = array('ID', 'Label', 'Parent category');
 
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         foreach ($columnAttributes as $i => $attribute) {
             $this->assertEquals($attribute, trim($crawler->filter('.table tbody tr td')->eq($i)->attr('data-label')));
@@ -118,14 +120,14 @@ class CategoryEntityTest extends WebTestCase
     public function testListViewPagination()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/?action=list&entity=Category');
+        $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
         $this->assertContains('1 - 15 of 200', $crawler->filter('.list-pagination')->text());
 
         $this->assertEquals('disabled', $crawler->filter('.list-pagination li:contains("First")')->attr('class'));
         $this->assertEquals('disabled', $crawler->filter('.list-pagination li:contains("Previous")')->attr('class'));
 
-        $this->assertEquals('/admin/?view=list&action=list&entity=Category&sortField=id&sortDirection=DESC&page=2', $crawler->filter('.list-pagination li a:contains("Next")')->attr('href'));
-        $this->assertEquals('/admin/?view=list&action=list&entity=Category&sortField=id&sortDirection=DESC&page=14', $crawler->filter('.list-pagination li a:contains("Last")')->attr('href'));
+        $this->assertEquals('/admin/?view=list&action=list&entity=Category&sortDirection=DESC&sortField=id&page=2', $crawler->filter('.list-pagination li a:contains("Next")')->attr('href'));
+        $this->assertEquals('/admin/?view=list&action=list&entity=Category&sortDirection=DESC&sortField=id&page=14', $crawler->filter('.list-pagination li a:contains("Last")')->attr('href'));
     }
 }
