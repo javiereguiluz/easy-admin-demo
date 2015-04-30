@@ -19,6 +19,28 @@ class AdminControllerTest extends WebTestCase
         );
     }
 
+    public function testDefaultCssFilesAreLinked()
+    {
+        $client = static::createClient();
+        $client->followRedirects(true);
+        $crawler = $client->request('GET', '/admin/');
+
+        $this->assertEquals(
+            '/bundles/easyadmin/stylesheet/bootstrap.min.css',
+            $crawler->filterXPath('//link[@rel="stylesheet"]')->eq(0)->attr('href')
+        );
+
+        $this->assertEquals(
+            '/bundles/easyadmin/stylesheet/font-awesome.min.css',
+            $crawler->filterXPath('//link[@rel="stylesheet"]')->eq(1)->attr('href')
+        );
+
+        $this->assertEquals(
+            '/_css/admin.css',
+            $crawler->filterXPath('//link[@rel="stylesheet"]')->eq(2)->attr('href')
+        );
+    }
+
     public function testLogo()
     {
         $client = static::createClient();
