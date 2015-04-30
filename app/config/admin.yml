@@ -1,14 +1,24 @@
 easy_admin:
     site_name: 'ACME Backend'
+    design:
+        form_theme:   'horizontal'
+        color_scheme: 'dark'
     entities:
-        Category: AppBundle\Entity\Category
-        Image: AppBundle\Entity\Image
-        Purchase: AppBundle\Entity\Purchase
+        Category:
+            class: AppBundle\Entity\Category
+            label: 'Categories'
+        Image:
+            class: AppBundle\Entity\Image
+            label: 'Images'
+        Purchase:
+            class: AppBundle\Entity\Purchase
+            label: 'Purchases'
         PurchaseItem:
             class: AppBundle\Entity\PurchaseItem
-            label: 'Purchase Item'
+            label: 'Purchase Items'
         Product:
             class: AppBundle\Entity\Product
+            label: 'Products'
             list:
                 fields:
                     - id
@@ -30,8 +40,8 @@ easy_admin:
                     - createdAt
             form:
                 fields:
-                    - { property: name, class: 'input-lg' }
+                    - 'name'
                     - { property: price, type: 'number', help: 'Prices are always in euros' }
                     - { property: 'ean', label: 'EAN', help: 'EAN 13 valid code. Leave empty if unknown.' }
-                    - enabled
-                    - description
+                    - 'enabled'
+                    - 'description'
