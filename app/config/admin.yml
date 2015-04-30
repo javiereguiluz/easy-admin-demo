@@ -7,6 +7,15 @@ easy_admin:
         Category:
             class: AppBundle\Entity\Category
             label: 'Categories'
+            list:
+                actions:
+                    - { name: 'new', label: 'New %%entity_name%%', icon: 'plus-circle' }
+                    - { name: 'search', label: 'Look for %%entity_name%%' }
+                title: 'Product %%entity_name%%'
+                fields:
+                    - 'id'
+                    - { property: 'name', label: 'Label' }
+                    - { property: 'parent', label: 'Parent category' }
         Image:
             class: AppBundle\Entity\Image
             label: 'Images'
