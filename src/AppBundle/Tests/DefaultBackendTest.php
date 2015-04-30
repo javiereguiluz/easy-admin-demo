@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\Tests\Controller;
+namespace AppBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminControllerTest extends WebTestCase
+class DefaultBackendTest extends WebTestCase
 {
     public function testIndexRedirectsToTheFirstEntityListing()
     {
@@ -74,4 +74,5 @@ class AdminControllerTest extends WebTestCase
             $i++;
         }
     }
+
 }
