@@ -19,6 +19,17 @@ class AdminControllerTest extends WebTestCase
         );
     }
 
+    public function testLogo()
+    {
+        $client = static::createClient();
+        $client->followRedirects(true);
+        $crawler = $client->request('GET', '/admin/');
+
+        $this->assertEquals('ACME Backend', $crawler->filter('#header-logo a')->text());
+        $this->assertEquals('/admin/', $crawler->filter('#header-logo a')->attr('href'));
+        $this->assertEquals('medium', $crawler->filter('#header-logo a')->attr('class'));
+    }
+
     public function testMainMenuItems()
     {
         $menuItems = array(
