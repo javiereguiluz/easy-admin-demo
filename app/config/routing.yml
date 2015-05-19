@@ -3,10 +3,6 @@ _homepage:
     defaults: { _controller: FrameworkBundle:Redirect:redirect, route: admin, permanent: true }
 
 easy_admin_bundle:
-    resource: "@EasyAdminBundle/Controller/"
+    resource: @AppBundle/Controller/AdminController.php
     type:     annotation
     prefix:   /admin
-
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
