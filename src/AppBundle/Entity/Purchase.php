@@ -15,7 +15,7 @@ use AppBundle\Model\Shipment;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Purchase
+ * Class Purchase.
  *
  * @author MacFJA
  *
@@ -26,7 +26,8 @@ class Purchase
 {
     /**
      * The purchase increment id. This identifier will be use in all communication between the customer and the store.
-     * @var integer
+     *
+     * @var int
      * @ORM\Column(type="integer", name="id", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -34,35 +35,40 @@ class Purchase
     protected $id = null;
 
     /**
-     * The Unique id of the purchase
+     * The Unique id of the purchase.
+     *
      * @var string
      * @ORM\Column(type="guid")
      */
     protected $guid = null;
 
     /**
-     * The day of the delivery
+     * The day of the delivery.
+     *
      * @var \DateTime
      * @ORM\Column(type="date")
      */
     protected $deliverySelected = null;
 
     /**
-     * The purchase date in the customer timezone
+     * The purchase date in the customer timezone.
+     *
      * @var \DateTime
      * @ORM\Column(type="datetimetz")
      */
     protected $purchaseAt = null;
 
     /**
-     * The shipping information
+     * The shipping information.
+     *
      * @var Shipment
      * @ORM\Column(type="object")
      */
     protected $shipping = null;
 
     /**
-     * The customer preferred time of the day for the delivery
+     * The customer preferred time of the day for the delivery.
+     *
      * @var \DateTime
      * @ORM\Column(type="time")
      */
@@ -70,13 +76,15 @@ class Purchase
 
     /**
      * The customer billing address.
+     *
      * @var array
      * @ORM\Column(type="json_array")
      */
     protected $billingAddress = array();
 
     /**
-     * Items that have been purchased
+     * Items that have been purchased.
+     *
      * @var PurchaseItem[]
      * @ORM\ManyToMany(targetEntity="PurchaseItem")
      * @ORM\JoinTable(name="purchase_purchase_item",
@@ -88,9 +96,9 @@ class Purchase
 
     /**
      * Constructor of the Purchase class.
-     * (Initialize some fields)
+     * (Initialize some fields).
      */
-    function __construct()
+    public function __construct()
     {
         //Initialize purchasedItems as a Doctrine Collection
         $this->purchasedItems = new ArrayCollection();
@@ -102,7 +110,8 @@ class Purchase
     }
 
     /**
-     * Set the address where the customer want its billing
+     * Set the address where the customer want its billing.
+     *
      * @param array $billingAddress
      */
     public function setBillingAddress($billingAddress)
@@ -111,7 +120,8 @@ class Purchase
     }
 
     /**
-     * Get the customer billing address
+     * Get the customer billing address.
+     *
      * @return array
      */
     public function getBillingAddress()
@@ -120,7 +130,8 @@ class Purchase
     }
 
     /**
-     * Set the day of delivery
+     * Set the day of delivery.
+     *
      * @param \DateTime $deliverySelected
      */
     public function setDeliverySelected($deliverySelected)
@@ -129,7 +140,8 @@ class Purchase
     }
 
     /**
-     * Get the day when the customer want to be deliver
+     * Get the day when the customer want to be deliver.
+     *
      * @return \DateTime
      */
     public function getDeliverySelected()
@@ -138,7 +150,8 @@ class Purchase
     }
 
     /**
-     * Get the purchase id
+     * Get the purchase id.
+     *
      * @return int
      */
     public function getId()
@@ -147,7 +160,8 @@ class Purchase
     }
 
     /**
-     * Set all items ordered
+     * Set all items ordered.
+     *
      * @param PurchaseItem[] $purchasedItems
      */
     public function setPurchasedItems($purchasedItems)
@@ -156,7 +170,8 @@ class Purchase
     }
 
     /**
-     * Get all ordered items
+     * Get all ordered items.
+     *
      * @return PurchaseItem[]
      */
     public function getPurchasedItems()
@@ -165,7 +180,8 @@ class Purchase
     }
 
     /**
-     * Set the delivery hour
+     * Set the delivery hour.
+     *
      * @param \DateTime $preferredDeliveryHour
      */
     public function setPreferredDeliveryHour($preferredDeliveryHour)
@@ -174,7 +190,8 @@ class Purchase
     }
 
     /**
-     * Get the delivery hour
+     * Get the delivery hour.
+     *
      * @return \DateTime
      */
     public function getPreferredDeliveryHour()
@@ -183,7 +200,8 @@ class Purchase
     }
 
     /**
-     * Set the date when the order have been created
+     * Set the date when the order have been created.
+     *
      * @param \DateTime $purchaseAt
      */
     public function setPurchaseAt($purchaseAt)
@@ -192,7 +210,8 @@ class Purchase
     }
 
     /**
-     * Get the date of the order
+     * Get the date of the order.
+     *
      * @return \DateTime
      */
     public function getPurchaseAt()
@@ -201,7 +220,8 @@ class Purchase
     }
 
     /**
-     * Set the shipping information
+     * Set the shipping information.
+     *
      * @param Shipment $shipping
      */
     public function setShipping($shipping)
@@ -210,7 +230,8 @@ class Purchase
     }
 
     /**
-     * Get the shipping information
+     * Get the shipping information.
+     *
      * @return Shipment
      */
     public function getShipping()
@@ -219,17 +240,21 @@ class Purchase
     }
 
     /**
-     * Generate an increment id base on the store id and teh current date
+     * Generate an increment id base on the store id and teh current date.
+     *
      * @param int $storeId
+     *
      * @return string
      */
-    public function generateIncrementId($storeId=1) {
+    public function generateIncrementId($storeId = 1)
+    {
         $uid = date('YmdHi');
+
         return sprintf('%d%O13d', $storeId, $uid);
     }
 
     /** {@inheritdoc} */
-    function __toString()
+    public function __toString()
     {
         return 'Purchase #'.$this->getIncrementId();
     }
@@ -273,5 +298,4 @@ class Purchase
 
         return $this;
     }
-
 }

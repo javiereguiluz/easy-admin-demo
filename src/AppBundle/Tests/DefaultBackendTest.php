@@ -71,8 +71,7 @@ class DefaultBackendTest extends WebTestCase
             $this->assertEquals($label, $crawler->filter('#header-menu li a')->eq($i)->text());
             $this->assertEquals($url, $crawler->filter('#header-menu li a')->eq($i)->attr('href'));
 
-            $i++;
+            ++$i;
         }
     }
-
 }

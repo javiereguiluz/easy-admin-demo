@@ -3,7 +3,6 @@
 namespace AppBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
 
 class CategoryEntityTest extends WebTestCase
 {
@@ -17,7 +16,7 @@ class CategoryEntityTest extends WebTestCase
 
     public function testListViewSearchAction()
     {
-        $this->markTestSkipped("It requires the latest not-yet-released stable version");
+        $this->markTestSkipped('It requires the latest not-yet-released stable version');
 
         $hiddenParameters = array(
             'view' => 'list',
@@ -37,7 +36,7 @@ class CategoryEntityTest extends WebTestCase
             $this->assertEquals($name, $crawler->filter('#content-search input[type=hidden]')->eq($i)->attr('name'));
             $this->assertEquals($value, $crawler->filter('#content-search input[type=hidden]')->eq($i)->attr('value'));
 
-            $i++;
+            ++$i;
         }
     }
 
