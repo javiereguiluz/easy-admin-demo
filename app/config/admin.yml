@@ -1,4 +1,19 @@
-easy_admin:
+# If you just need a quick backend for your Symfony application, the only
+# configuration you need is the list of entities:
+#
+# easy_admin:
+#     entities:
+#         - AppBundle\Entity\Category
+#         - AppBundle\Entity\Image
+#         - AppBundle\Entity\Purchase
+#         - AppBundle\Entity\PurchaseItem
+#         - AppBundle\Entity\Product
+
+# This demo application is prepared to showcase most of the EasyAdmin features.
+# That's why the backend configuration is much more detailed. All these options
+# are explained in detail in the bundle documentation, which is published at
+# https://github.com/javiereguiluz/EasyAdminBundle
+ easy_admin:
     site_name: 'ACME Backend'
     design:
         form_theme:   'horizontal'
