@@ -13,7 +13,7 @@
 # That's why the backend configuration is much more detailed. All these options
 # are explained in detail in the bundle documentation, which is published at
 # https://github.com/javiereguiluz/EasyAdminBundle
- easy_admin:
+easy_admin:
     site_name: 'ACME Backend'
     design:
         form_theme:   'horizontal'
