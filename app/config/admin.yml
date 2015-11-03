@@ -22,6 +22,14 @@ easy_admin:
         Category:
             class: AppBundle\Entity\Category
             label: 'Categories'
+            new:
+                fields:
+                    - 'name'
+                    - { property: 'parent', type_options: { placeholder: 'Select a category...' } }
+            edit:
+                fields:
+                    - 'name'
+                    - 'parent'
             list:
                 actions:
                     - { name: 'new', label: 'New %%entity_name%%', icon: 'plus-circle' }
@@ -69,3 +77,4 @@ easy_admin:
                     - { property: 'ean', label: 'EAN', help: 'EAN 13 valid code. Leave empty if unknown.' }
                     - 'enabled'
                     - 'description'
+                    - createdAt
