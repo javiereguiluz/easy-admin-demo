@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bef9ffba52219e20f475d6869526453e",
-    "content-hash": "e16731a8191aeb0938ef6d2497e616a0",
+    "hash": "c65bb74e22f19dca9aec26f5d112719e",
+    "content-hash": "5ddd15eaa1ffeff0e62fe71dd8c49686",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1595,6 +1595,58 @@
             "time": "2015-10-02 11:51:59"
         },
         {
+            "name": "symfony/phpunit-bridge",
+            "version": "v2.7.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/phpunit-bridge.git",
+                "reference": "896bbd1742a6ecd2f7904167bdb6bf88eb6cfbe4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/896bbd1742a6ecd2f7904167bdb6bf88eb6cfbe4",
+                "reference": "896bbd1742a6ecd2f7904167bdb6bf88eb6cfbe4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
+            },
+            "type": "symfony-bridge",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Bridge\\PhpUnit\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony PHPUnit Bridge",
+            "homepage": "https://symfony.com",
+            "time": "2015-09-27 10:08:51"
+        },
+        {
             "name": "symfony/security-acl",
             "version": "v2.7.5",
             "source": {
@@ -1719,7 +1771,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/478ad543b732ce5d342784ed04b7700ad9f8f93e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/5805cc50402e6d059f5f59e8876156c5de833c46",
                 "reference": "478ad543b732ce5d342784ed04b7700ad9f8f93e",
                 "shasum": ""
             },

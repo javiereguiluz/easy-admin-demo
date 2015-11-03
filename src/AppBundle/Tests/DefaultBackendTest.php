@@ -36,7 +36,7 @@ class DefaultBackendTest extends WebTestCase
         );
 
         $this->assertEquals(
-            '/_css/admin.css',
+            '/admin/_css/admin.css',
             $crawler->filterXPath('//link[@rel="stylesheet"]')->eq(2)->attr('href')
         );
     }
@@ -55,11 +55,11 @@ class DefaultBackendTest extends WebTestCase
     public function testMainMenuItems()
     {
         $menuItems = array(
-            'Categories' => '/admin/?entity=Category&action=list&view=list',
-            'Images' => '/admin/?entity=Image&action=list&view=list',
-            'Purchases' => '/admin/?entity=Purchase&action=list&view=list',
-            'Purchase Items' => '/admin/?entity=PurchaseItem&action=list&view=list',
-            'Products' => '/admin/?entity=Product&action=list&view=list',
+            'Categories' => '/admin/?entity=Category&action=list',
+            'Images' => '/admin/?entity=Image&action=list',
+            'Purchases' => '/admin/?entity=Purchase&action=list',
+            'Purchase Items' => '/admin/?entity=PurchaseItem&action=list',
+            'Products' => '/admin/?entity=Product&action=list',
         );
 
         $client = static::createClient();

@@ -18,6 +18,7 @@
         "sensio/framework-extra-bundle"        : "~3.0,>=3.0.2",
         "symfony/assetic-bundle"               : "~2.3",
         "symfony/monolog-bundle"               : "~2.4",
+        "symfony/phpunit-bridge"               : "^2.7",
         "symfony/swiftmailer-bundle"           : "~2.3",
         "symfony/symfony"                      : "2.8.*@dev",
         "twig/extensions"                      : "~1.0"

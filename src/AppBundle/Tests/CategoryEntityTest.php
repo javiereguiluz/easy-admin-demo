@@ -11,7 +11,7 @@ class CategoryEntityTest extends WebTestCase
         $client = static::createClient();
         $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
-        $this->assertEquals('Product Categories', trim($crawler->filter('h1.title')->text()));
+        $this->assertEquals('Product Category', trim($crawler->filter('h1.title')->text()));
     }
 
     public function testListViewSearchAction()
@@ -45,9 +45,9 @@ class CategoryEntityTest extends WebTestCase
         $client = static::createClient();
         $crawler = $client->request('GET', '/admin/?entity=Category&action=list&view=list');
 
-        $this->assertEquals('New Categories', trim($crawler->filter('#content-actions a.btn')->text()));
+        $this->assertEquals('New Category', trim($crawler->filter('#content-actions a.btn')->text()));
         $this->assertEquals('fa fa-plus-circle', $crawler->filter('#content-actions a.btn i')->attr('class'));
-        $this->assertEquals('/admin/?entity=Category&action=new&view=list', $crawler->filter('#content-actions a.btn')->attr('href'));
+        $this->assertStringStartsWith('/admin/?action=new&entity=Category&sortField=id&sortDirection=DESC&page=1&referer=', $crawler->filter('#content-actions a.btn')->attr('href'));
     }
 
     public function testListViewTableIdColumn()
@@ -126,7 +126,7 @@ class CategoryEntityTest extends WebTestCase
         $this->assertEquals('disabled', $crawler->filter('.list-pagination li:contains("First")')->attr('class'));
         $this->assertEquals('disabled', $crawler->filter('.list-pagination li:contains("Previous")')->attr('class'));
 
-        $this->assertEquals('/admin/?view=list&action=list&entity=Category&sortDirection=DESC&sortField=id&page=2', $crawler->filter('.list-pagination li a:contains("Next")')->attr('href'));
-        $this->assertEquals('/admin/?view=list&action=list&entity=Category&sortDirection=DESC&sortField=id&page=14', $crawler->filter('.list-pagination li a:contains("Last")')->attr('href'));
+        $this->assertEquals('/admin/?action=list&entity=Category&sortField=id&sortDirection=DESC&page=2&referer=%252Fadmin%252F%253Faction%253Dlist%2526entity%253DCategory%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1', $crawler->filter('.list-pagination li a:contains("Next")')->attr('href'));
+        $this->assertEquals('/admin/?action=list&entity=Category&sortField=id&sortDirection=DESC&page=14&referer=%252Fadmin%252F%253Faction%253Dlist%2526entity%253DCategory%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1', $crawler->filter('.list-pagination li a:contains("Last")')->attr('href'));
     }
 }
