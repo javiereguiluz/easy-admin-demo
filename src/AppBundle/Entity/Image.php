@@ -31,6 +31,7 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id = null;
+
     /**
      * The raw data of the full size image.
      *
@@ -38,6 +39,7 @@ class Image
      * @ORM\Column(type="blob", name="image_data")
      */
     protected $data;
+
     /**
      * The raw data of the thumbnail of the image.
      *

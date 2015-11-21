@@ -45,6 +45,8 @@ easy_admin:
         Purchase:
             class: AppBundle\Entity\Purchase
             label: 'Purchases'
+            list:
+                fields: ['guid', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']
         PurchaseItem:
             class: AppBundle\Entity\PurchaseItem
             label: 'Purchase Items'

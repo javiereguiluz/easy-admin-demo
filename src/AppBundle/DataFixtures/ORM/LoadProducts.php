@@ -9,6 +9,11 @@ use AppBundle\Entity\Product;
 
 class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 {
+    public function getOrder()
+    {
+        return 50;
+    }
+
     public function load(ObjectManager $manager)
     {
         foreach (range(1, 100) as $i) {
@@ -25,11 +30,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         }
 
         $manager->flush();
-    }
-
-    public function getOrder()
-    {
-        return 100;
     }
 
     public function getRandomTags()

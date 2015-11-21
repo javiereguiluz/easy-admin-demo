@@ -52,10 +52,16 @@ class PurchaseItem
      * The ordered product.
      *
      * @var Product
-     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="purchasedItems")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     **/
+     */
     protected $product;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Purchase", inversedBy="purchasedItems")
+     * @ORM\JoinColumn(name="purchase_id", referencedColumnName="id")
+     */
+    protected $purchase;
 
     /**
      * @param Product $product
@@ -71,6 +77,22 @@ class PurchaseItem
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * @param Purchase $purchase
+     */
+    public function setPurchase($purchase)
+    {
+        $this->purchase = $purchase;
+    }
+
+    /**
+     * @return Purchase
+     */
+    public function getPurchase()
+    {
+        return $this->purchase;
     }
 
     /**

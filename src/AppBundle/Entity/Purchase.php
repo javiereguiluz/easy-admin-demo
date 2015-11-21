@@ -27,10 +27,9 @@ class Purchase
     /**
      * The purchase increment id. This identifier will be use in all communication between the customer and the store.
      *
-     * @var int
-     * @ORM\Column(type="integer", name="id", nullable=false)
+     * @var string
+     * @ORM\Column(type="string", name="id", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id = null;
 
@@ -43,20 +42,20 @@ class Purchase
     protected $guid = null;
 
     /**
-     * The day of the delivery.
+     * The date of the delivery (it doesn't include the time).
      *
      * @var \DateTime
      * @ORM\Column(type="date")
      */
-    protected $deliverySelected = null;
+    protected $deliveryDate = null;
 
     /**
-     * The purchase date in the customer timezone.
+     * The purchase datetime in the customer timezone.
      *
      * @var \DateTime
      * @ORM\Column(type="datetimetz")
      */
-    protected $purchaseAt = null;
+    protected $createdAt = null;
 
     /**
      * The shipping information.
@@ -72,7 +71,7 @@ class Purchase
      * @var \DateTime
      * @ORM\Column(type="time")
      */
-    protected $preferredDeliveryHour = null;
+    protected $deliveryHour = null;
 
     /**
      * The customer billing address.
@@ -86,11 +85,7 @@ class Purchase
      * Items that have been purchased.
      *
      * @var PurchaseItem[]
-     * @ORM\ManyToMany(targetEntity="PurchaseItem")
-     * @ORM\JoinTable(name="purchase_purchase_item",
-     *      joinColumns={@ORM\JoinColumn(name="purchase_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="purchase")
      */
     protected $purchasedItems;
 
@@ -100,13 +95,11 @@ class Purchase
      */
     public function __construct()
     {
-        //Initialize purchasedItems as a Doctrine Collection
+        $this->id = $this->generateId();
         $this->purchasedItems = new ArrayCollection();
-        //Initialize purchaseAt to now (useful for new order, override by existing one)
-        $this->purchaseAt = new \DateTime();
-        $this->deliverySelected = new \DateTime('+2 days');
-        $this->preferredDeliveryHour = new \DateTime('14:00');
-        $this->incrementId = $this->generateIncrementId();
+        $this->createdAt = new \DateTime();
+        $this->deliveryDate = new \DateTime('+2 days');
+        $this->deliveryHour = new \DateTime('14:00');
     }
 
     /**
@@ -120,8 +113,6 @@ class Purchase
     }
 
     /**
-     * Get the customer billing address.
-     *
      * @return array
      */
     public function getBillingAddress()
@@ -130,38 +121,22 @@ class Purchase
     }
 
     /**
-     * Set the day of delivery.
-     *
-     * @param \DateTime $deliverySelected
+     * @param \DateTime $deliveryDate
      */
-    public function setDeliverySelected($deliverySelected)
+    public function setDeliveryDate($deliveryDate)
     {
-        $this->deliverySelected = $deliverySelected;
+        $this->deliveryDate = $deliveryDate;
     }
 
     /**
-     * Get the day when the customer want to be deliver.
-     *
      * @return \DateTime
      */
-    public function getDeliverySelected()
+    public function getDeliveryDate()
     {
-        return $this->deliverySelected;
+        return $this->deliveryDate;
     }
 
     /**
-     * Get the purchase id.
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set all items ordered.
-     *
      * @param PurchaseItem[] $purchasedItems
      */
     public function setPurchasedItems($purchasedItems)
@@ -170,8 +145,6 @@ class Purchase
     }
 
     /**
-     * Get all ordered items.
-     *
      * @return PurchaseItem[]
      */
     public function getPurchasedItems()
@@ -180,48 +153,38 @@ class Purchase
     }
 
     /**
-     * Set the delivery hour.
-     *
-     * @param \DateTime $preferredDeliveryHour
+     * @param \DateTime $deliveryHour
      */
-    public function setPreferredDeliveryHour($preferredDeliveryHour)
+    public function setDeliveryHour($deliveryHour)
     {
-        $this->preferredDeliveryHour = $preferredDeliveryHour;
+        $this->deliveryHour = $deliveryHour;
     }
 
     /**
-     * Get the delivery hour.
-     *
      * @return \DateTime
      */
-    public function getPreferredDeliveryHour()
+    public function getDeliveryHour()
     {
-        return $this->preferredDeliveryHour;
+        return $this->deliveryHour;
     }
 
     /**
-     * Set the date when the order have been created.
-     *
-     * @param \DateTime $purchaseAt
+     * @param \DateTime $createdAt
      */
-    public function setPurchaseAt($purchaseAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->purchaseAt = $purchaseAt;
+        $this->createdAt = $createdAt;
     }
 
     /**
-     * Get the date of the order.
-     *
      * @return \DateTime
      */
-    public function getPurchaseAt()
+    public function getCreatedAt()
     {
-        return $this->purchaseAt;
+        return $this->createdAt;
     }
 
     /**
-     * Set the shipping information.
-     *
      * @param Shipment $shipping
      */
     public function setShipping($shipping)
@@ -230,8 +193,6 @@ class Purchase
     }
 
     /**
-     * Get the shipping information.
-     *
      * @return Shipment
      */
     public function getShipping()
@@ -240,23 +201,19 @@ class Purchase
     }
 
     /**
-     * Generate an increment id base on the store id and teh current date.
-     *
      * @param int $storeId
      *
      * @return string
      */
-    public function generateIncrementId($storeId = 1)
+    public function generateId($storeId = 1)
     {
-        $uid = date('YmdHi');
-
-        return sprintf('%d%O13d', $storeId, $uid);
+        return preg_replace('/[^0-9]/i', '', sprintf('%d%d%03d%s', $storeId, date('Y'), date('z'), microtime()));
     }
 
     /** {@inheritdoc} */
     public function __toString()
     {
-        return 'Purchase #'.$this->getIncrementId();
+        return 'Purchase #'.$this->getId();
     }
 
     /**
@@ -282,20 +239,31 @@ class Purchase
     /**
      * @return string
      */
-    public function getIncrementId()
+    public function getId()
     {
-        return $this->incrementId;
+        return $this->id;
     }
 
     /**
-     * @param string $incrementId
+     * @param string $id
      *
      * @return Purchase
      */
-    public function setIncrementId($incrementId)
+    public function setId($id)
     {
-        $this->incrementId = $incrementId;
+        $this->id = $id;
 
         return $this;
+    }
+
+    public function getTotal()
+    {
+        $total = 0.0;
+
+        foreach ($this->getPurchasedItems() as $item) {
+            $total += $item->getTotalPrice();
+        }
+
+        return $total;
     }
 }

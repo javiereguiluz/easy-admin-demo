@@ -111,6 +111,7 @@ class Product
      * @ORM\JoinTable(name="product_category")
      */
     protected $categories;
+
     /**
      * The image of the product.
      *
@@ -121,14 +122,18 @@ class Product
     protected $image;
 
     /**
+     * @var PurchaseItem[]
+     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="product")
+     */
+    protected $purchasedItems;
+
+    /**
      * Constructor of the Category class.
      * (Initialize some fields).
      */
     public function __construct()
     {
-        //Initialize categories as a Doctrine Collection
         $this->categories = new ArrayCollection();
-        //Initialize createdAt to now (useful for new product, override by existing one)
         $this->createdAt = new \DateTime();
     }
 

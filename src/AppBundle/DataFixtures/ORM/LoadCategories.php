@@ -9,6 +9,11 @@ use AppBundle\Entity\Category;
 
 class LoadCategories extends AbstractFixture implements OrderedFixtureInterface
 {
+    public function getOrder()
+    {
+        return 10;
+    }
+
     public function load(ObjectManager $manager)
     {
         foreach (range(1, 100) as $i) {
@@ -31,10 +36,5 @@ class LoadCategories extends AbstractFixture implements OrderedFixtureInterface
         }
 
         $manager->flush();
-    }
-
-    public function getOrder()
-    {
-        return 10;
     }
 }
