@@ -26,19 +26,13 @@ easy_admin:
                 fields:
                     - 'name'
                     - { property: 'parent', type_options: { placeholder: 'Select a category...' } }
-            edit:
-                fields:
-                    - 'name'
-                    - 'parent'
             list:
-                actions:
-                    - { name: 'new', label: 'New %%entity_name%%', icon: 'plus-circle' }
-                    - { name: 'search', label: 'Look for %%entity_name%%' }
                 title: 'Product %%entity_name%%'
                 fields:
                     - 'id'
                     - { property: 'name', label: 'Label' }
                     - { property: 'parent', label: 'Parent category' }
+                    - 'products'
         Image:
             class: AppBundle\Entity\Image
             label: 'Images'
@@ -66,17 +60,20 @@ easy_admin:
                 fields:
                     - id
                     - name
-                    - { property: 'ean', type: 'string' }
+                    - { property: 'ean', label: 'EAN', type: 'string' }
                     - description
                     - price
                     - features
+                    - categories
                     - enabled
                     - createdAt
             form:
                 fields:
                     - 'name'
-                    - { property: price, type: 'number', help: 'Prices are always in euros' }
-                    - { property: 'ean', label: 'EAN', help: 'EAN 13 valid code. Leave empty if unknown.' }
+                    - { property: price, type: 'number' }
+                    - { property: 'ean', label: 'EAN', help: 'EAN-13 valid code. Leave empty if unknown.' }
+                    - 'features'
+                    - 'categories'
                     - 'enabled'
                     - 'description'
                     - createdAt

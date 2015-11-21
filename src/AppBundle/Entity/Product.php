@@ -362,13 +362,19 @@ class Product
     }
 
     /**
-     * Get the date when the product have been created.
-     *
      * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -387,5 +393,21 @@ class Product
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @param PurchaseItem[] $purchasedItems
+     */
+    public function setPurchasedItems($purchasedItems)
+    {
+        $this->purchasedItems = $purchasedItems;
+    }
+
+    /**
+     * @return PurchaseItem[]
+     */
+    public function getPurchasedItems()
+    {
+        return $this->purchasedItems;
     }
 }

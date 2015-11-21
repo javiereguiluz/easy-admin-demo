@@ -24,6 +24,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
             $product->setTags($this->getRandomTags());
             $product->setEan($this->getRandomEan());
             $product->setDescription($this->getRandomDescription());
+            $product->setCategories($this->getRandomCategories());
 
             $this->addReference('product-'.$i, $product);
             $manager->persist($product);
@@ -32,7 +33,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $manager->flush();
     }
 
-    public function getRandomTags()
+    private function getRandomTags()
     {
         $tags = array(
             'books',
@@ -58,7 +59,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         return array_slice($tags, 0, $numTags - 1);
     }
 
-    public function getRandomEan()
+    private function getRandomEan()
     {
         $start = 100000000000;
         $end = 999999999999;
@@ -74,7 +75,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         return $ean13.$checksum;
     }
 
-    public function getRandomName()
+    private function getRandomName()
     {
         $words = array(
             'Lorem', 'Ipsum', 'Sit', 'Amet', 'Adipiscing', 'Elit',
@@ -89,14 +90,14 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         return 'Product '.implode(' ', array_slice($words, 0, $numWords));
     }
 
-    public function getRandomPrice()
+    private function getRandomPrice()
     {
         $cents = array('00', '29', '39', '49', '99');
 
         return (float) rand(2, 79).'.'.$cents[array_rand($cents)];
     }
 
-    public function getRandomDescription()
+    private function getRandomDescription()
     {
         $phrases = array(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -122,5 +123,19 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         shuffle($phrases);
 
         return implode(' ', array_slice($phrases, 0, $numPhrases - 1));
+    }
+
+    private function getRandomCategories()
+    {
+        $categories = array();
+        $numCategories = rand(1, 4);
+        $allCategoryIds = range(1, 100);
+        $selectedCategoryIds = array_rand($allCategoryIds, $numCategories);
+
+        foreach ((array) $selectedCategoryIds as $categoryId) {
+            $categories[] = $this->getReference('subcategory-'.$categoryId);
+        }
+
+        return $categories;
     }
 }

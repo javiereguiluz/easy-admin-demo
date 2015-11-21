@@ -53,7 +53,7 @@ class Category
      * The category parent.
      *
      * @var Category
-     * @ORM\OneToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      **/
     protected $parent;
