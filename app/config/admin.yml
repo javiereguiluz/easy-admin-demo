@@ -53,7 +53,7 @@ easy_admin:
                     - name
                     - { property: 'price', format: '%.2f' }
                     - { property: 'ean', label: 'EAN13', type: 'string' }
-                    - enabled
+                    - { property: 'enabled', type: 'toggle' }
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - tags
             show:
@@ -69,11 +69,11 @@ easy_admin:
                     - createdAt
             form:
                 fields:
-                    - 'name'
+                    - name
                     - { property: price, type: 'number' }
                     - { property: 'ean', label: 'EAN', help: 'EAN-13 valid code. Leave empty if unknown.' }
-                    - 'features'
-                    - 'categories'
-                    - 'enabled'
-                    - 'description'
+                    - features
+                    - categories
+                    - enabled
+                    - description
                     - createdAt
