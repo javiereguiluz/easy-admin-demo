@@ -68,8 +68,8 @@ class Purchase
     /**
      * The customer preferred time of the day for the delivery.
      *
-     * @var \DateTime
-     * @ORM\Column(type="time")
+     * @var \DateTime|null
+     * @ORM\Column(type="time", nullable=true)
      */
     protected $deliveryHour = null;
 
@@ -161,7 +161,7 @@ class Purchase
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDeliveryHour()
     {
