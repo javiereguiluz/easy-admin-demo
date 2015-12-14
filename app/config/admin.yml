@@ -19,31 +19,6 @@ easy_admin:
         form_theme:   'horizontal'
         color_scheme: 'dark'
     entities:
-        Category:
-            class: AppBundle\Entity\Category
-            label: 'Categories'
-            new:
-                fields:
-                    - 'name'
-                    - { property: 'parent', type_options: { placeholder: 'Select a category...' } }
-            list:
-                title: 'Product %%entity_name%%'
-                fields:
-                    - 'id'
-                    - { property: 'name', label: 'Label' }
-                    - { property: 'parent', label: 'Parent category' }
-                    - 'products'
-        Image:
-            class: AppBundle\Entity\Image
-            label: 'Images'
-        Purchase:
-            class: AppBundle\Entity\Purchase
-            label: 'Purchases'
-            list:
-                fields: ['guid', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']
-        PurchaseItem:
-            class: AppBundle\Entity\PurchaseItem
-            label: 'Purchase Items'
         Product:
             class: AppBundle\Entity\Product
             label: 'Products'
@@ -77,3 +52,28 @@ easy_admin:
                     - enabled
                     - description
                     - createdAt
+        Category:
+            class: AppBundle\Entity\Category
+            label: 'Categories'
+            new:
+                fields:
+                    - 'name'
+                    - { property: 'parent', type_options: { placeholder: 'Select a category...' } }
+            list:
+                title: 'Product %%entity_name%%'
+                fields:
+                    - 'id'
+                    - { property: 'name', label: 'Label' }
+                    - { property: 'parent', label: 'Parent category' }
+                    - 'products'
+        Purchase:
+            class: AppBundle\Entity\Purchase
+            label: 'Purchases'
+            list:
+                fields: ['guid', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']
+        PurchaseItem:
+            class: AppBundle\Entity\PurchaseItem
+            label: 'Purchase Items'
+        Image:
+            class: AppBundle\Entity\Image
+            label: 'Images'
