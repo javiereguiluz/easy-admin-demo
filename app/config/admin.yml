@@ -45,12 +45,12 @@ easy_admin:
             form:
                 fields:
                     - name
-                    - { property: price, type: 'number' }
+                    - { property: 'price', type: 'number' }
                     - { property: 'ean', label: 'EAN', help: 'EAN-13 valid code. Leave empty if unknown.' }
                     - features
                     - categories
                     - enabled
-                    - description
+                    - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - createdAt
         Category:
             class: AppBundle\Entity\Category
