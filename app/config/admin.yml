@@ -28,7 +28,7 @@ easy_admin:
                     - name
                     - { property: 'price', format: '%.2f' }
                     - { property: 'ean', label: 'EAN13', type: 'string' }
-                    - { property: 'enabled', type: 'toggle' }
+                    - enabled
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - tags
             show:
