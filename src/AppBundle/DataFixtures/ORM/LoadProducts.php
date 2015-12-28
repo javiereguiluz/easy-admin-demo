@@ -16,13 +16,14 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        foreach (range(1, 100) as $i) {
+        foreach (range(0, 99) as $i) {
             $product = new Product();
             $product->setEnabled((rand(1, 1000) % 10) < 7);
             $product->setName($this->getRandomName());
             $product->setPrice($this->getRandomPrice());
             $product->setTags($this->getRandomTags());
             $product->setEan($this->getRandomEan());
+            $product->setImage('image'.($i % 10).'.jpg');
             $product->setDescription($this->getRandomDescription());
             $product->setCategories($this->getRandomCategories());
 
