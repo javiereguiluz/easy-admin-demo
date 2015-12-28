@@ -25,10 +25,10 @@ easy_admin:
             list:
                 fields:
                     - id
+                    - enabled
                     - name
                     - { property: 'price', format: '%.2f' }
                     - { property: 'ean', label: 'EAN13', type: 'string' }
-                    - enabled
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - tags
             show:
@@ -52,6 +52,13 @@ easy_admin:
                     - enabled
                     - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - createdAt
+        User:
+            class: AppBundle\Entity\User
+            label: 'Users'
+            list:
+                fields: ['id', 'isActive', 'username', 'email', 'purchases']
+            edit:
+                fields: ['username', 'email', 'isActive', 'purchases']
         Category:
             class: AppBundle\Entity\Category
             label: 'Categories'
@@ -74,6 +81,3 @@ easy_admin:
         PurchaseItem:
             class: AppBundle\Entity\PurchaseItem
             label: 'Purchase Items'
-        Image:
-            class: AppBundle\Entity\Image
-            label: 'Images'

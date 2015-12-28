@@ -11,7 +11,7 @@ class LoadCategories extends AbstractFixture implements OrderedFixtureInterface
 {
     public function getOrder()
     {
-        return 10;
+        return 20;
     }
 
     public function load(ObjectManager $manager)

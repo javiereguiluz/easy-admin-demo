@@ -82,6 +82,14 @@ class Purchase
     protected $billingAddress = array();
 
     /**
+     * The user who made the purchase.
+     *
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="purchases")
+     */
+    protected $buyer;
+
+    /**
      * Items that have been purchased.
      *
      * @var PurchaseItem[]
@@ -118,6 +126,22 @@ class Purchase
     public function getBillingAddress()
     {
         return $this->billingAddress;
+    }
+
+    /**
+     * @param User $buyer
+     */
+    public function setBuyer($buyer)
+    {
+        $this->buyer = $buyer;
+    }
+
+    /**
+     * @return User
+     */
+    public function getBuyer()
+    {
+        return $this->buyer;
     }
 
     /**

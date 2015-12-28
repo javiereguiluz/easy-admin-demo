@@ -113,15 +113,6 @@ class Product
     protected $categories;
 
     /**
-     * The image of the product.
-     *
-     * @var Image
-     * @ORM\OneToOne(targetEntity="Image")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     */
-    protected $image;
-
-    /**
      * @var PurchaseItem[]
      * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="product", cascade={"remove"})
      */
