@@ -123,7 +123,7 @@ class Product
 
     /**
      * @var PurchaseItem[]
-     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="product", cascade={"remove"})
      */
     protected $purchasedItems;
 
