@@ -16,7 +16,7 @@
 easy_admin:
     site_name: 'ACME Backend'
     design:
-        form_theme:   'horizontal'
+        form_theme:   ['VichUploaderBundle:Form:fields.html.twig', 'EasyAdminBundle:form:bootstrap_3_horizontal_layout.html.twig']
         color_scheme: 'dark'
     entities:
         Product:
@@ -25,10 +25,11 @@ easy_admin:
             list:
                 fields:
                     - id
+                    - enabled
                     - name
                     - { property: 'price', format: '%.2f' }
                     - { property: 'ean', label: 'EAN13', type: 'string' }
-                    - enabled
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - tags
             show:
@@ -37,6 +38,7 @@ easy_admin:
                     - name
                     - { property: 'ean', label: 'EAN', type: 'string' }
                     - description
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
                     - price
                     - features
                     - categories
@@ -47,11 +49,21 @@ easy_admin:
                     - name
                     - { property: 'price', type: 'number' }
                     - { property: 'ean', label: 'EAN', help: 'EAN-13 valid code. Leave empty if unknown.' }
+                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
                     - features
                     - categories
                     - enabled
                     - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - createdAt
+        User:
+            class: AppBundle\Entity\User
+            label: 'Users'
+            list:
+                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract', base_path: %app.path.user_contracts% }]
+            show:
+                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract', base_path: %app.path.user_contracts% }]
+            edit:
+                fields: ['username', 'email', 'isActive', 'purchases', { property: 'contractFile', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }]
         Category:
             class: AppBundle\Entity\Category
             label: 'Categories'
@@ -74,6 +86,3 @@ easy_admin:
         PurchaseItem:
             class: AppBundle\Entity\PurchaseItem
             label: 'Purchase Items'
-        Image:
-            class: AppBundle\Entity\Image
-            label: 'Images'

@@ -8,6 +8,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.product_images: /uploads/images/product
+    app.path.user_contracts: /uploads/files/user/contracts
 
 framework:
     #esi:             ~
@@ -67,3 +69,14 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# File Uploader
+vich_uploader:
+    db_driver: orm
+    mappings:
+        product_image:
+            uri_prefix: %app.path.product_images%
+            upload_destination: %kernel.root_dir%/../web/uploads/images/products
+        user_contract:
+            uri_prefix: %app.path.user_contracts%
+            upload_destination: %kernel.root_dir%/../web/uploads/files/user/contracts

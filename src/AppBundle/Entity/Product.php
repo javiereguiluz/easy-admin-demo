@@ -12,14 +12,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Class Product.
  *
  * @author MacFJA
  *
- * @ORM\Table(name="product")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -31,7 +33,7 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id = null;
+    private $id = null;
 
     /**
      * The creation date of the product.
@@ -39,7 +41,7 @@ class Product
      * @var \DateTime
      * @ORM\Column(type="datetime", name="created_at")
      */
-    protected $createdAt = null;
+    private $createdAt = null;
 
     /**
      * List of tags associated to the product.
@@ -47,7 +49,7 @@ class Product
      * @var string[]
      * @ORM\Column(type="simple_array")
      */
-    protected $tags = array();
+    private $tags = array();
 
     /**
      * The EAN 13 of the product. (type set to string in PHP due to 32 bit limitation).
@@ -55,7 +57,7 @@ class Product
      * @var string
      * @ORM\Column(type="bigint")
      */
-    protected $ean;
+    private $ean;
 
     /**
      * Indicate if the product is enabled (available in store).
@@ -63,7 +65,26 @@ class Product
      * @var bool
      * @ORM\Column(type="boolean")
      */
-    protected $enabled = false;
+    private $enabled = false;
+
+    /**
+     * It only stores the name of the image associated with the product.
+     *
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $image;
+
+    /**
+     * This unmapped property stores the binary contents of the image file
+     * associated with the product.
+     *
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     *
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * Features of the product.
@@ -76,7 +97,7 @@ class Product
      * @var array
      * @ORM\Column(type="array")
      */
-    protected $features = array();
+    private $features = array();
 
     /**
      * The price of the product.
@@ -84,7 +105,7 @@ class Product
      * @var float
      * @ORM\Column(type="float")
      */
-    protected $price = 0.0;
+    private $price = 0.0;
 
     /**
      * The name of the product.
@@ -92,7 +113,7 @@ class Product
      * @var string
      * @ORM\Column(type="string")
      */
-    protected $name;
+    private $name;
 
     /**
      * The description of the product.
@@ -100,7 +121,7 @@ class Product
      * @var string
      * @ORM\Column(type="text")
      */
-    protected $description;
+    private $description;
 
     /**
      * List of categories where the products is
@@ -110,22 +131,13 @@ class Product
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="products")
      * @ORM\JoinTable(name="product_category")
      */
-    protected $categories;
-
-    /**
-     * The image of the product.
-     *
-     * @var Image
-     * @ORM\OneToOne(targetEntity="Image")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     */
-    protected $image;
+    private $categories;
 
     /**
      * @var PurchaseItem[]
      * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="product", cascade={"remove"})
      */
-    protected $purchasedItems;
+    private $purchasedItems;
 
     /**
      * Constructor of the Category class.
@@ -256,9 +268,23 @@ class Product
     }
 
     /**
-     * Set the product image.
-     *
-     * @param Image $image
+     * @param File $image
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param string $image
      */
     public function setImage($image)
     {
@@ -266,9 +292,7 @@ class Product
     }
 
     /**
-     * Get the product image.
-     *
-     * @return Image
+     * @return string
      */
     public function getImage()
     {
