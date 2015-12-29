@@ -31,6 +31,7 @@ class LoadUsers extends AbstractFixture implements OrderedFixtureInterface, Cont
             $user = new User();
             $user->setUsername('user'.$i);
             $user->setEmail('user'.$i.'@example.com');
+            $user->setContract('contract'.($i % 5).'.pdf');
 
             $plainPassword = 'password'.$i;
             $encodedPassword = $encoder->encodePassword($user, $plainPassword);

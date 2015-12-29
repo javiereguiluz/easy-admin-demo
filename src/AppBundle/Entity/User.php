@@ -4,11 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @Vich\Uploadable
  */
 class User implements UserInterface, \Serializable
 {
@@ -55,6 +58,26 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(name="isActive", type="boolean")
      */
     private $isActive;
+
+    /**
+     * It only stores the name of the file which stores the contract subscribed
+     * by the user.
+     *
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $contract;
+
+    /**
+     * This unmapped property stores the binary contents of the file which stores
+     * the contract subscribed by the user.
+     *
+     * @Vich\UploadableField(mapping="user_contracts", fileNameProperty="contract")
+     *
+     * @var File
+     */
+    private $contractFile;
 
     public function __construct()
     {
@@ -182,6 +205,38 @@ class User implements UserInterface, \Serializable
     public function getPurchases()
     {
         return $this->purchases;
+    }
+
+    /**
+     * @param File $contract
+     */
+    public function setContractFile(File $contract = null)
+    {
+        $this->contractFile = $contract;
+    }
+
+    /**
+     * @return File
+     */
+    public function getContractFile()
+    {
+        return $this->contractFile;
+    }
+
+    /**
+     * @param string $contract
+     */
+    public function setContract($contract)
+    {
+        $this->contract = $contract;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContract()
+    {
+        return $this->contract;
     }
 
     public function getSalt()

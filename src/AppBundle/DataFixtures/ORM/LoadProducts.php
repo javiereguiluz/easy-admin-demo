@@ -23,6 +23,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
             $product->setPrice($this->getRandomPrice());
             $product->setTags($this->getRandomTags());
             $product->setEan($this->getRandomEan());
+            $product->setImage('image'.($i % 10).'.jpg');
             $product->setDescription($this->getRandomDescription());
             $product->setCategories($this->getRandomCategories());
 
