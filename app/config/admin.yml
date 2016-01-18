@@ -18,6 +18,19 @@ easy_admin:
     design:
         form_theme:   ['VichUploaderBundle:Form:fields.html.twig', 'EasyAdminBundle:form:bootstrap_3_horizontal_layout.html.twig']
         color_scheme: 'dark'
+        menu:
+            - label: 'Products'
+              icon: 'shopping-basket'
+              children:
+                  - { entity: 'Product', icon: 'th-list', label: 'List Products', params: { sortField: 'createdAt' } }
+                  - { entity: 'Category', icon: 'tags' }
+                  - { entity: 'Product', icon: 'plus-circle', label: 'Add Product', params: { action: 'new' } }
+            - { label: 'Customers', entity: 'User', icon: 'users' }
+            - { label: 'Purchases', entity: 'Purchase', icon: 'credit-card', params: { sortField: 'deliveryDate' } }
+            - { label: 'About EasyAdmin' }
+            - { label: 'Project Home', url: 'https://github.com/javiereguiluz/EasyAdminBundle', icon: 'home' }
+            - { label: 'Documentation', url: 'https://github.com/javiereguiluz/EasyAdminBundle#getting-started-guide', icon: 'book' }
+            - { label: 'Report Issues', url: 'https://github.com/javiereguiluz/EasyAdminBundle/issues', icon: 'github' }
     entities:
         Product:
             class: AppBundle\Entity\Product
