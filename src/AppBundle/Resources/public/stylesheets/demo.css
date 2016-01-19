@@ -1,0 +1,32 @@
+body#welcome #main .box {
+    background: #FFF;
+    border: 1px solid #EEE;
+    box-shadow: 0 0 3px #CCC;
+    margin: -2em auto 2em;
+    max-width: 90%;
+    min-height: 150px;
+    padding: 2em;
+    width: 600px
+}
+
+body#welcome #main .box h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 .5em;
+}
+
+body#welcome #main .box a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+body#welcome #main .box code {
+    background: #F0F0F0;
+    color: inherit;
+}
+
+@media (min-width: 768px) {
+    body#welcome #main .box {
+        margin-top: 2em;
+    }
+}

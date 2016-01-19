@@ -18,6 +18,9 @@ easy_admin:
     design:
         form_theme:   ['VichUploaderBundle:Form:fields.html.twig', 'EasyAdminBundle:form:bootstrap_3_horizontal_layout.html.twig']
         color_scheme: 'dark'
+        assets:
+            css:
+                - '/bundles/app/stylesheets/demo.css'
         menu:
             - label: 'Products'
               icon: 'shopping-basket'
