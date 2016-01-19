@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "917809f48083a486572e1860a3c12e6b",
-    "content-hash": "705ecb59cf58e3ad6a7f2414fa7cd0ee",
+    "hash": "273991c236685ae5600e5d5036aa7a00",
+    "content-hash": "282e129f3487ef823b2e1200d3cc1ccb",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -936,16 +936,16 @@
         },
         {
             "name": "javiereguiluz/easyadmin-bundle",
-            "version": "v1.9.8",
+            "version": "v1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "9b557757a19f4d3a7345421d4baa6e1c53af7cfa"
+                "reference": "531401192541696f643a9935eb2ca686a57cac55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/9b557757a19f4d3a7345421d4baa6e1c53af7cfa",
-                "reference": "9b557757a19f4d3a7345421d4baa6e1c53af7cfa",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/531401192541696f643a9935eb2ca686a57cac55",
+                "reference": "531401192541696f643a9935eb2ca686a57cac55",
                 "shasum": ""
             },
             "require": {
@@ -1011,7 +1011,7 @@
                 "backend",
                 "generator"
             ],
-            "time": "2015-12-24 18:20:13"
+            "time": "2016-01-17 20:36:12"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -2261,7 +2261,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/6350eaf3417935295410dd9a4432ee0097055a3b",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/9d481b0b734ca1c832be9e8da572e69650bdf1bb",
                 "reference": "6350eaf3417935295410dd9a4432ee0097055a3b",
                 "shasum": ""
             },
