@@ -17,6 +17,6 @@ class AdminController extends EasyAdminController
             return $this->render('demo/welcome.html.twig');
         }
 
-        return parent::indexAction();
+        return parent::indexAction($request);
     }
 }
