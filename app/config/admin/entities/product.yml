@@ -1,0 +1,46 @@
+# This file sets the configuration of the 'Product' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        Product:
+            class: AppBundle\Entity\Product
+            label: 'Products'
+            list:
+                fields:
+                    - id
+                    - enabled
+                    - name
+                    - { property: 'price', format: '%.2f' }
+                    - { property: 'ean', label: 'EAN13', type: 'string' }
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
+                    - { property: 'createdAt', format: 'j / M / Y' }
+                    - tags
+            show:
+                fields:
+                    - id
+                    - name
+                    - { property: 'ean', label: 'EAN', type: 'string' }
+                    - description
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
+                    - price
+                    - features
+                    - categories
+                    - enabled
+                    - createdAt
+            form:
+                fields:
+                    - name
+                    - { property: 'price', type: 'number' }
+                    - { property: 'ean', label: 'EAN', help: 'EAN-13 valid code. Leave empty if unknown.' }
+                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+                    - features
+                    - categories
+                    - enabled
+                    - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
+                    - createdAt

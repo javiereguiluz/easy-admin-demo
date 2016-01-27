@@ -1,0 +1,19 @@
+# This file sets the configuration of the 'User' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        User:
+            class: AppBundle\Entity\User
+            label: 'Users'
+            list:
+                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract', base_path: %app.path.user_contracts% }]
+            show:
+                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract', base_path: %app.path.user_contracts% }]
+            edit:
+                fields: ['username', 'email', 'isActive', 'purchases', { property: 'contractFile', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }]

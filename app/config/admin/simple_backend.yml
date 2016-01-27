@@ -1,0 +1,16 @@
+# If you just need a quick backend for your Symfony application, this is the
+# only configuration you must define in 'app/config/config.yml':
+#
+# easy_admin:
+#     entities:
+#         - AppBundle\Entity\Category
+#         - AppBundle\Entity\Image
+#         - AppBundle\Entity\Purchase
+#         - AppBundle\Entity\PurchaseItem
+#         - AppBundle\Entity\Product
+#
+# In this demo application, the configuration is split into several small files
+# to show an alternative way to define the configuration for complex backends.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
