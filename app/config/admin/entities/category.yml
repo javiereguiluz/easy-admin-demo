@@ -1,0 +1,24 @@
+# This file sets the configuration of the 'Category' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        Category:
+            class: AppBundle\Entity\Category
+            label: 'Categories'
+            new:
+                fields:
+                    - 'name'
+                    - { property: 'parent', type_options: { placeholder: 'Select a category...' } }
+            list:
+                title: 'Product %%entity_name%%'
+                fields:
+                    - 'id'
+                    - { property: 'name', label: 'Label' }
+                    - { property: 'parent', label: 'Parent category' }
+                    - 'products'

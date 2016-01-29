@@ -1,0 +1,13 @@
+# This file sets the configuration of the 'PurchaseItem' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        PurchaseItem:
+            class: AppBundle\Entity\PurchaseItem
+            label: 'Purchase Items'

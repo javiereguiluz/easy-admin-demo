@@ -1,0 +1,25 @@
+# This file sets the configuration of the main menu. If your backend is simple,
+# you probably can leave the 'menu' option empty and rely on the default menu
+# created by EasyAdmin.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    design:
+        menu:
+            - label: 'Products'
+              icon: 'shopping-basket'
+              children:
+                  - { entity: 'Product', icon: 'th-list', label: 'List Products', params: { sortField: 'createdAt' } }
+                  - { entity: 'Category', icon: 'tags' }
+                  - { entity: 'Product', icon: 'plus-circle', label: 'Add Product', params: { action: 'new' } }
+            - { label: 'Customers', entity: 'User', icon: 'users' }
+            - { label: 'Purchases', entity: 'Purchase', icon: 'credit-card', params: { sortField: 'deliveryDate' } }
+            - { label: 'About EasyAdmin' }
+            - { label: 'Project Home', url: 'https://github.com/javiereguiluz/EasyAdminBundle', icon: 'home' }
+            - { label: 'Documentation', url: 'https://github.com/javiereguiluz/EasyAdminBundle#getting-started-guide', icon: 'book' }
+            - { label: 'Report Issues', url: 'https://github.com/javiereguiluz/EasyAdminBundle/issues', icon: 'github' }
