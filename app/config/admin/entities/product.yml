@@ -8,19 +8,24 @@
 # which is published at https://github.com/javiereguiluz/EasyAdminBundle
 easy_admin:
     entities:
+        # the configuration of this entity is very verbose because it's used as
+        # an example to show all the configuration options available for entities
+        # check out the configuration of the other entities to see how concise
+        # can be the configuration of your backend
         Product:
             class: AppBundle\Entity\Product
             label: 'Products'
             list:
+                page_title: 'title.list.product'
                 fields:
-                    - id
-                    - enabled
-                    - name
-                    - { property: 'price', format: '%.2f' }
-                    - { property: 'ean', label: 'EAN13', type: 'string' }
-                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
-                    - { property: 'createdAt', format: 'j / M / Y' }
-                    - tags
+                    - { property: 'id', label: 'product.id' }
+                    - { property: 'enabled', label: 'product.enabled' }
+                    - { property: 'name', label: 'product.name' }
+                    - { property: 'price', label: 'product.price', format: '%.2f' }
+                    - { property: 'ean', label: 'product.ean', type: 'string' }
+                    - { property: 'image', label: 'product.image', type: 'image', base_path: %app.path.product_images% }
+                    - { property: 'createdAt', label: 'product.createdAt', format: 'j / M / Y' }
+                    - { property: 'tags', label: 'product.tags' }
             show:
                 fields:
                     - id
