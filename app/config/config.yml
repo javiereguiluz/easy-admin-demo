@@ -8,7 +8,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    app.path.product_images: /uploads/images/product
+    app.path.product_images: /uploads/images/products
     app.path.user_contracts: /uploads/files/user/contracts
 
 framework:
