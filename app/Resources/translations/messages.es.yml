@@ -1,0 +1,27 @@
+# main menu
+menu.category:     'Categorías'
+menu.product:      'Productos'
+menu.product.list: 'Listado de Productos'
+menu.product.add:  'Añadir Producto'
+menu.customer:     'Clientes'
+menu.purchase:     'Ventas'
+menu.about:        'Sobre EasyAdmin'
+menu.about.home:   'Sitio web oficial'
+menu.about.docs:   'Documentación'
+menu.about.issues: 'Informar de errores'
+
+# Product entity properties
+product.id: ID
+product.enabled: 'Activado'
+product.name: 'Nombre'
+product.price: 'Precio'
+product.ean: 'EAN-13'
+product.image: 'Imagen'
+product.createdAt: 'Creado'
+product.tags: 'Etiquetas'
+
+# Product entity titles
+title.list.product: 'Productos'
+
+# Actions
+Delete: Borrar

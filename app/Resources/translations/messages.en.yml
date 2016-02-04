@@ -1,0 +1,27 @@
+# main menu
+menu.category:     'Categories'
+menu.product:      'Products'
+menu.product.list: 'List Products'
+menu.product.add:  'Add Product'
+menu.customer:     'Customers'
+menu.purchase:     'Purchases'
+menu.about:        'About EasyAdmin'
+menu.about.home:   'Project Home'
+menu.about.docs:   'Documentation'
+menu.about.issues: 'Report Issues'
+
+# Product entity properties
+product.id: ID
+product.enabled: 'Enabled'
+product.name: 'Name'
+product.price: 'Price'
+product.ean: 'EAN-13'
+product.image: 'Image'
+product.createdAt: 'Created at'
+product.tags: 'Tags'
+
+# Product entity titles
+title.list.product: 'Products'
+
+# Actions
+Delete: Delete
