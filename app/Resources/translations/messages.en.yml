@@ -1,27 +1,60 @@
-# main menu
-menu.category:     'Categories'
-menu.product:      'Products'
-menu.product.list: 'List Products'
-menu.product.add:  'Add Product'
-menu.customer:     'Customers'
-menu.purchase:     'Purchases'
-menu.about:        'About EasyAdmin'
-menu.about.home:   'Project Home'
-menu.about.docs:   'Documentation'
-menu.about.issues: 'Report Issues'
+# There are two main techniques to fully translate a backend:
+# 1) Define the `label` option for each element and translate those labels in
+#    files like this.
+# 2) Let the backend create the labels for each element and translate those
+#    labels in files like this.
+#
+# The first one is the traditional way of translating Symfony applications, but
+# is very boring and you'll make lots of mistakes. The second one is the way we
+# recommend to translate backends.
+#
+# Both ways are explained in https://github.com/javiereguiluz/EasyAdminBundle/blob/master/Resources/doc/tutorials/i18n.md
 
-# Product entity properties
-product.id: ID
-product.enabled: 'Enabled'
-product.name: 'Name'
-product.price: 'Price'
-product.ean: 'EAN-13'
-product.image: 'Image'
-product.createdAt: 'Created at'
-product.tags: 'Tags'
+# NOTE: since the application is originally developed in English, this
+#       "translation" file looks useless because it doesn't really translate
+#       any content. However, this file is essential to use it as the base for
+#       the translations into other languages.
 
-# Product entity titles
-title.list.product: 'Products'
+# The "main menu" is an example of defining the labels explicitly
+# (they are translated following the 1) method)
+# ------------------------------------------------------------------------------
+menu.category:     Categories
+menu.product:      Products
+menu.product.list: List Products
+menu.product.add:  Add Product
+menu.customer:     Customers
+menu.purchase:     Purchases
+menu.about:        About EasyAdmin
+menu.about.home:   Project Home
+menu.about.docs:   Documentation
+menu.about.issues: Report Issues
 
-# Actions
+# We let EasyAdmin generate the rest of the backend labels
+# (they are translated following the 2) method)
+# ------------------------------------------------------------------------------
+
+# entity names, labels and titles
+Product: Product
+Products: Products
+Category: Category
+Categories: Categories
+
+# entity properties
+Created at: Created at
+Description: Description
+EAN-13: EAN-13
+Ean: EAN-13
+Enabled: Enabled
+Features: Features
+ID: ID
+Image: Image
+Image file: Image file
+Name: Name
+Price: Price
+Tags: Tags
+
+# help messages
+EAN-13 valid code. Leave empty if unknown.: EAN-13 valid code. Leave empty if unknown.
+
+# actions
 Delete: Delete

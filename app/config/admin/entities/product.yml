@@ -16,21 +16,20 @@ easy_admin:
             class: AppBundle\Entity\Product
             label: 'Products'
             list:
-                page_title: 'title.list.product'
                 fields:
-                    - { property: 'id', label: 'product.id' }
-                    - { property: 'enabled', label: 'product.enabled' }
-                    - { property: 'name', label: 'product.name' }
-                    - { property: 'price', label: 'product.price', format: '%.2f' }
-                    - { property: 'ean', label: 'product.ean', type: 'string' }
-                    - { property: 'image', label: 'product.image', type: 'image', base_path: %app.path.product_images% }
-                    - { property: 'createdAt', label: 'product.createdAt', format: 'j / M / Y' }
-                    - { property: 'tags', label: 'product.tags' }
+                    - id
+                    - enabled
+                    - name
+                    - { property: 'price', format: '%.2f' }
+                    - { property: 'ean', type: 'string' }
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
+                    - { property: 'createdAt', format: 'j / M / Y' }
+                    - tags
             show:
                 fields:
                     - id
                     - name
-                    - { property: 'ean', label: 'EAN', type: 'string' }
+                    - { property: 'ean', type: 'string' }
                     - description
                     - { property: 'image', type: 'image', base_path: %app.path.product_images% }
                     - price
@@ -42,7 +41,7 @@ easy_admin:
                 fields:
                     - name
                     - { property: 'price', type: 'number' }
-                    - { property: 'ean', label: 'EAN', help: 'EAN-13 valid code. Leave empty if unknown.' }
+                    - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.' }
                     - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
                     - features
                     - categories

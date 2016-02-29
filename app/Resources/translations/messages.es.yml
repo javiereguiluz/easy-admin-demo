@@ -1,27 +1,40 @@
+# Check out the 'messages_en.yml' for an explanation about the best practices
+# recommended to translate your backend efficiently.
+
 # main menu
-menu.category:     'Categorías'
-menu.product:      'Productos'
-menu.product.list: 'Listado de Productos'
-menu.product.add:  'Añadir Producto'
-menu.customer:     'Clientes'
-menu.purchase:     'Ventas'
-menu.about:        'Sobre EasyAdmin'
-menu.about.home:   'Sitio web oficial'
-menu.about.docs:   'Documentación'
-menu.about.issues: 'Informar de errores'
+menu.category:     Categorías
+menu.product:      Productos
+menu.product.list: Listado de Productos
+menu.product.add:  Añadir Producto
+menu.customer:     Clientes
+menu.purchase:     Ventas
+menu.about:        Sobre EasyAdmin
+menu.about.home:   Sitio web oficial
+menu.about.docs:   Documentación
+menu.about.issues: Informar de errores
 
-# Product entity properties
-product.id: ID
-product.enabled: 'Activado'
-product.name: 'Nombre'
-product.price: 'Precio'
-product.ean: 'EAN-13'
-product.image: 'Imagen'
-product.createdAt: 'Creado'
-product.tags: 'Etiquetas'
+# entity names, labels and titles
+Product: Producto
+Products: Productos
+Category: Categoría
+Categories: Categorías
 
-# Product entity titles
-title.list.product: 'Productos'
+# entity properties
+Created at: Fecha creación
+Description: Descripción
+EAN-13: EAN-13
+Ean: EAN-13
+Enabled: Activado
+Features: Funcionalidades
+ID: ID
+Image: Imagen
+Image file: Archivo de la imagen
+Name: Nombre
+Price: Precio
+Tags: Etiquetas
 
-# Actions
+# help messages
+EAN-13 valid code. Leave empty if unknown.: Introduce un código EAN-13 válido. Déjalo vacío si no dispones del código.
+
+# actions
 Delete: Borrar
