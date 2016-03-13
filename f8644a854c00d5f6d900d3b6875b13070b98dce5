@@ -1,0 +1,5 @@
+---------------------------------------------------------------------------
+
+by javiereguiluz at 2016-01-27T21:00:27Z
+
+I can't make tests work. The SQLite database with the fixtures is not created and all tests fail. Any clue to solve this will be greatly appreciated. Thanks!
