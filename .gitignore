@@ -7,10 +7,12 @@
 /var/logs/*
 !var/logs/.gitkeep
 !var/SymfonyRequirements.php
+!var/data/
+var/data/*
+!var/data/.gitkeep
 
 # Parameters
 /app/config/parameters.yml
-/app/config/parameters.ini
 
 # Managed by Composer
 /vendor/
@@ -23,6 +25,3 @@
 
 # Composer PHAR
 /composer.phar
-
-# SQLite Database
-/app/data.db3
