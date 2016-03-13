@@ -45,6 +45,7 @@ easy_admin:
                     - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
                     - features
                     - categories
+                    - tags
                     - enabled
                     - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - createdAt
