@@ -42,10 +42,10 @@ easy_admin:
                     - name
                     - { property: 'price', type: 'number' }
                     - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.' }
-                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
                     - features
                     - categories
                     - tags
                     - enabled
-                    - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
+                    - { property: 'description', type: 'ckeditor' }
                     - createdAt
