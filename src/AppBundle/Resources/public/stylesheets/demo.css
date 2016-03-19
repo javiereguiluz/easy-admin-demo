@@ -1,16 +1,25 @@
 body#welcome #main .box {
-    background: #FFF;
-    border: 1px solid #EEE;
-    box-shadow: 0 0 3px #CCC;
-    margin: -2em auto 2em;
-    max-width: 90%;
+    margin: 0 auto;
+    max-width: 95%;
     min-height: 150px;
-    padding: 2em;
+    padding: 1em;
     width: 600px
 }
 
+body#welcome #main .box--primary {
+    background: #FFF;
+    border: 1px solid #EEE;
+    box-shadow: 0 0 3px #CCC;
+    padding: 2em;
+}
+body#welcome #main .box--secondary {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
 body#welcome #main .box h1 {
-    font-size: 24px;
+    font-size: 21px;
     font-weight: bold;
     margin: 0 0 .5em;
 }
@@ -25,16 +34,23 @@ body#welcome #main .box code {
     color: inherit;
 }
 
-@media (min-width: 768px) {
-    body#welcome #main .box {
-        margin-top: 2em;
-    }
-}
-
 body.new .large input.form-control,
 body.edit .large input.form-control,
 body.show .large div.form-control {
     font-size: 21px;
     height: auto;
     padding: 7px;
+}
+
+@media (min-width: 768px) {
+    body#welcome #main .box {
+        margin-top: 1em;
+    }
+    body#welcome #main .box h1 {
+        font-size: 24px;
+    }
+    body#welcome #main .box .login-help {
+        color: #777;
+        margin-top: 15px;
+    }
 }

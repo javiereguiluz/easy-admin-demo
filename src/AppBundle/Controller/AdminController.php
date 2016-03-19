@@ -13,10 +13,6 @@ class AdminController extends EasyAdminController
      */
     public function indexAction(Request $request)
     {
-        if (null === $request->query->get('entity')) {
-            return $this->render('demo/welcome.html.twig');
-        }
-
         return parent::indexAction($request);
     }
 }
