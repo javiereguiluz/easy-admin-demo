@@ -20,12 +20,13 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
             $product = new Product();
             $product->setEnabled((rand(1, 1000) % 10) < 7);
             $product->setName($this->getRandomName());
+            $product->setDescription($this->getRandomDescription());
             $product->setPrice($this->getRandomPrice());
-            $product->setTags($this->getRandomTags());
             $product->setEan($this->getRandomEan());
             $product->setImage('image'.($i % 10).'.jpg');
-            $product->setDescription($this->getRandomDescription());
             $product->setCategories($this->getRandomCategories());
+            $product->setTags($this->getRandomTags());
+            $product->setFeatures($this->getRandomFeatures());
 
             $this->addReference('product-'.$i, $product);
             $manager->persist($product);
@@ -124,6 +125,30 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         shuffle($phrases);
 
         return implode(' ', array_slice($phrases, 0, $numPhrases - 1));
+    }
+
+    private function getRandomFeatures()
+    {
+        $features = array(
+            'Feature Aenean vel mauris quis erat volutpat placerat.',
+            'Feature Sed at est non nisl mattis semper.',
+            'Feature Morbi vehicula magna sed vestibulum congue.',
+            'Feature Quisque id enim in neque condimentum accumsan.',
+            'Feature Pellentesque ornare enim vel lacus euismod, a finibus nibh facilisis.',
+            'Feature Vestibulum laoreet erat a porttitor pharetra.',
+            'Feature Ut tincidunt diam eu risus commodo posuere.',
+            'Feature Curabitur vitae nulla eu orci elementum semper in lacinia lacus.',
+            'Feature Proin nec nunc condimentum, tristique lorem in, sollicitudin lectus.',
+            'Feature Duis lobortis orci vel velit molestie mattis eu a nisi.',
+            'Feature Fusce luctus metus et interdum malesuada.',
+            'Feature Nam ut nulla placerat, egestas neque in, maximus dui.',
+            'Feature Morbi rutrum augue nec purus fringilla bibendum ac id risus.',
+        );
+
+        $numFeatures = rand(3, 6);
+        shuffle($features);
+
+        return array_slice($features, 0, $numFeatures - 1);
     }
 
     private function getRandomCategories()
