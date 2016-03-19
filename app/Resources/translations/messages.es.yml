@@ -35,6 +35,3 @@ Tags: Etiquetas
 
 # help messages
 EAN-13 valid code. Leave empty if unknown.: Introduce un código EAN-13 válido. Déjalo vacío si no dispones del código.
-
-# actions
-Delete: Borrar
