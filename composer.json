@@ -13,6 +13,7 @@
         "doctrine/doctrine-bundle"              : "^1.6",
         "doctrine/doctrine-cache-bundle"        : "^1.2",
         "egeloen/ckeditor-bundle"               : "^4.0",
+        "friendsofsymfony/user-bundle"          : "~2.0@dev",
         "incenteev/composer-parameter-handler"  : "^2.0",
         "javiereguiluz/easyadmin-bundle"        : "^1.11.1",
         "sensio/distribution-bundle"            : "^5.0",
