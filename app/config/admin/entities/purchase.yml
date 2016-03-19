@@ -10,6 +10,7 @@ easy_admin:
     entities:
         Purchase:
             class: AppBundle\Entity\Purchase
-            label: 'Purchases'
+            disabled_actions: ['edit', 'delete', 'new']
             list:
+                actions: [ { name: 'show', icon: 'shopping-basket' } ]
                 fields: ['guid', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']

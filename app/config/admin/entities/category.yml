@@ -11,14 +11,25 @@ easy_admin:
         Category:
             class: AppBundle\Entity\Category
             label: 'Categories'
-            new:
-                fields:
-                    - 'name'
-                    - { property: 'parent', type_options: { placeholder: 'Select a category...' } }
             list:
-                title: 'Product %%entity_name%%'
+                title: 'Product %%entity_label%%'
+                actions:
+                    - { name: 'show', label: '', icon: 'search' }
+                    - { name: 'edit', label: '', icon: 'edit' }
+                    - { name: 'delete', label: '', icon: 'trash' }
                 fields:
                     - 'id'
                     - { property: 'name', label: 'Label' }
                     - { property: 'parent', label: 'Parent category' }
                     - 'products'
+            show:
+                fields:
+                    - 'id'
+                    - { property: 'name', label: 'Label', css_class: 'large' }
+                    - { property: 'parent', label: 'Parent category' }
+                    - 'products'
+            form:
+                fields:
+                    - { property: 'name', label: 'Label', css_class: 'col-sm-12 large' }
+                    - { property: 'parent', type_options: { placeholder: 'Select a category...' } }
+

@@ -28,24 +28,25 @@ easy_admin:
             show:
                 fields:
                     - id
-                    - name
-                    - { property: 'ean', type: 'string' }
+                    - { property: 'name', css_class: 'large' }
                     - description
-                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
-                    - price
-                    - features
-                    - categories
-                    - enabled
+                    - { property: 'enabled', label: 'Published' }
                     - createdAt
-            form:
-                fields:
-                    - name
-                    - { property: 'price', type: 'number' }
-                    - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.' }
-                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType', type_options: { required: true } }
+                    - price
+                    - { property: 'ean', type: 'string' }
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
                     - features
                     - categories
                     - tags
-                    - enabled
-                    - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
-                    - createdAt
+            form:
+                fields:
+                    - { property: 'name', css_class: 'col-sm-12 large' }
+                    - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType', css_class: 'col-sm-12' }
+                    - { property: 'enabled', label: 'Published', css_class: 'col-sm-2' }
+                    - { property: 'createdAt', css_class: 'col-sm-4' }
+                    - { property: 'price', type: 'number', css_class: 'col-sm-2' }
+                    - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.', css_class: 'col-sm-4' }
+                    - { property: 'features', css_class: 'col-sm-8' }
+                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType',  css_class: 'col-sm-4', type_options: { required: true } }
+                    - { property: 'categories', css_class: 'col-sm-8' }
+                    - { property: 'tags', css_class: 'col-sm-4' }

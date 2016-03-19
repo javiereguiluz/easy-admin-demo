@@ -10,10 +10,16 @@ easy_admin:
     entities:
         User:
             class: AppBundle\Entity\User
-            label: 'Users'
             list:
-                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract', base_path: %app.path.user_contracts% }]
+                title: 'Customers'
+                actions: ['-new']
+                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract.html.twig', base_path: %app.path.user_contracts% }]
             show:
-                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract', base_path: %app.path.user_contracts% }]
-            edit:
-                fields: ['username', 'email', 'isActive', 'purchases', { property: 'contractFile', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }]
+                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract.html.twig', base_path: %app.path.user_contracts% }]
+            form:
+                fields:
+                    - { property: 'username', css_class: 'col-sm-4' }
+                    - { property: 'email', css_class: 'col-sm-6' }
+                    - { property: 'isActive', css_class: 'col-sm-2' }
+                    - { property: 'purchases', css_class: 'col-sm-12' }
+                    - { property: 'contractFile', type: 'Vich\UploaderBundle\Form\Type\VichFileType', css_class: 'col-sm-12' }

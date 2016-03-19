@@ -30,3 +30,11 @@ body#welcome #main .box code {
         margin-top: 2em;
     }
 }
+
+body.new .large input.form-control,
+body.edit .large input.form-control,
+body.show .large div.form-control {
+    font-size: 21px;
+    height: auto;
+    padding: 7px;
+}
