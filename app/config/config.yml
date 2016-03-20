@@ -60,3 +60,15 @@ vich_uploader:
         user_contracts:
             uri_prefix: %app.path.user_contracts%
             upload_destination: %kernel.root_dir%/../web/uploads/files/user/contracts
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+
+swiftmailer:
+    transport: null
+    host:      null
+    username:  null
+    password:  null
+    spool:     { type: memory }

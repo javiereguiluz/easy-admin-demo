@@ -31,6 +31,8 @@ class LoadUsers extends AbstractFixture implements OrderedFixtureInterface, Cont
             $user = new User();
             $user->setUsername('user'.$i);
             $user->setEmail('user'.$i.'@example.com');
+            $user->setRoles(array('ROLE_USER'));
+            $user->setEnabled(true);
             $user->setContract('contract'.($i % 5).'.pdf');
 
             $plainPassword = 'password'.$i;
@@ -41,6 +43,15 @@ class LoadUsers extends AbstractFixture implements OrderedFixtureInterface, Cont
             $manager->persist($user);
         }
 
+        // 'John Smith' is the admin user allowed to access the EasyAdmin Demo
+        $user = new User();
+        $user->setUsername('john.smith');
+        $user->setEmail('john.smith@example.com');
+        $user->setRoles(array('ROLE_ADMIN'));
+        $user->setEnabled(true);
+        $user->setContract('contract0.pdf');
+        $user->setPassword($encoder->encodePassword($user, '1234'));
+        $manager->persist($user);
         $manager->flush();
     }
 }
