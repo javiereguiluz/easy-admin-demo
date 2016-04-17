@@ -10,7 +10,14 @@ easy_admin:
     entities:
         Purchase:
             class: AppBundle\Entity\Purchase
-            disabled_actions: ['edit', 'delete', 'new']
+            disabled_actions: ['delete']
             list:
                 actions: [ { name: 'show', icon: 'shopping-basket' } ]
                 fields: ['guid', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']
+            form:
+                fields:
+                    - guid
+                    - deliveryDate
+                    - deliveryHour
+                    - { property: 'billingAddress', type: 'text' }
+                    - buyer
