@@ -15,7 +15,7 @@
         "egeloen/ckeditor-bundle"               : "^4.0",
         "friendsofsymfony/user-bundle"          : "~2.0@dev",
         "incenteev/composer-parameter-handler"  : "^2.0",
-        "javiereguiluz/easyadmin-bundle"        : "^1.11.1",
+        "javiereguiluz/easyadmin-bundle"        : "^1.12",
         "sensio/distribution-bundle"            : "^5.0",
         "sensio/framework-extra-bundle"         : "^3.0.2",
         "symfony/monolog-bundle"                : "^2.8",
