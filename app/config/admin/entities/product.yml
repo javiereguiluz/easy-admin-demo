@@ -48,5 +48,5 @@ easy_admin:
                     - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.', css_class: 'col-sm-4' }
                     - { property: 'features', css_class: 'col-sm-8' }
                     - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType',  css_class: 'col-sm-4', type_options: { required: true } }
-                    - { property: 'categories', css_class: 'col-sm-8' }
+                    - { property: 'categories', css_class: 'col-sm-8', type: 'easyadmin_autocomplete' }
                     - { property: 'tags', css_class: 'col-sm-4' }

@@ -20,4 +20,4 @@ easy_admin:
                     - deliveryDate
                     - deliveryHour
                     - { property: 'billingAddress', type: 'text' }
-                    - buyer
+                    - { property: 'buyer', type: 'easyadmin_autocomplete' }
