@@ -30,5 +30,6 @@ easy_admin:
                     - 'products'
             form:
                 fields:
-                    - { property: 'name', label: 'Label', css_class: 'col-sm-12 large' }
-                    - { property: 'parent',  type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { property: 'name', label: 'Label', css_class: 'large', help: 'As displayed on the website (the slug is auto-generated)' }
+                    - { property: 'parent', type: 'easyadmin_autocomplete', label: 'Parent category' }

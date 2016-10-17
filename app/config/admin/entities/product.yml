@@ -40,13 +40,20 @@ easy_admin:
                     - tags
             form:
                 fields:
-                    - { property: 'name', css_class: 'col-sm-12 large' }
-                    - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType', css_class: 'col-sm-12' }
-                    - { property: 'enabled', label: 'Published', css_class: 'col-sm-2' }
-                    - { property: 'createdAt', css_class: 'col-sm-4' }
-                    - { property: 'price', type: 'number', css_class: 'col-sm-2' }
-                    - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.', css_class: 'col-sm-4' }
-                    - { property: 'features', css_class: 'col-sm-8' }
-                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType',  css_class: 'col-sm-4', type_options: { required: true } }
-                    - { property: 'categories', css_class: 'col-sm-8', type: 'easyadmin_autocomplete' }
-                    - { property: 'tags', css_class: 'col-sm-4' }
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
+                    - { property: 'name', css_class: 'large' }
+                    - { property: 'description', type: 'ckeditor' }
+                    - { type: 'divider' }
+                    - { property: 'categories', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Product Details', icon: 'cube' }
+                    - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.' }
+                    - { property: 'price', type: 'number' }
+                    - { type: 'section', label: 'Advanced Settings', icon: 'warning', help: 'Reserved for administrators use' }
+                    - { property: 'enabled', label: 'Published' }
+                    - { property: 'createdAt' }
+                    - { type: 'group', css_class: 'col-sm-8 new-row' }
+                    - { property: 'features' }
+                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { property: 'tags' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
