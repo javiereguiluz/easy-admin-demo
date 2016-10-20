@@ -26,9 +26,9 @@ class LoadPurchases extends AbstractFixture implements OrderedFixtureInterface
             $purchase->setDeliveryHour($this->getRandomHour());
             $purchase->setBillingAddress(json_encode(array(
                 'line1' => '1234 Main Street',
-                'line2' => 'Big City, XX 23456'
+                'line2' => 'Big City, XX 23456',
             )));
-            $purchase->setBuyer($this->getReference('user-'. ($i % 20)));
+            $purchase->setBuyer($this->getReference('user-'.($i % 20)));
 
             $this->addReference('purchase-'.$i, $purchase);
             $manager->persist($purchase);

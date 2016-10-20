@@ -3,9 +3,7 @@
 namespace AppBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\Console\Input\ArrayInput;
 
 class BackendTest extends WebTestCase
 {
@@ -58,7 +56,7 @@ class BackendTest extends WebTestCase
     }
 
     /**
-     * Code copied from http://stackoverflow.com/a/27223293/2804294
+     * Code copied from http://stackoverflow.com/a/27223293/2804294.
      *
      * @return \Symfony\Bundle\FrameworkBundle\Client
      */
@@ -78,7 +76,7 @@ class BackendTest extends WebTestCase
         $loginManager->loginUser($firewallName, $user);
 
         // save the login token into the session and put it in a cookie
-        $container->get('session')->set('_security_' . $firewallName,
+        $container->get('session')->set('_security_'.$firewallName,
             serialize($container->get('security.token_storage')->getToken()));
         $container->get('session')->save();
         $client->getCookieJar()->set(new Cookie($session->getName(), $session->getId()));

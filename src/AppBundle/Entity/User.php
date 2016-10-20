@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -71,9 +70,9 @@ class User extends BaseUser
     }
 
     /**
-     * Set isActive
+     * Set isActive.
      *
-     * @param boolean $isActive
+     * @param bool $isActive
      *
      * @return User
      */
@@ -85,7 +84,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get isActive
+     * Get isActive.
      *
      * @return bool
      */
@@ -158,10 +157,9 @@ class User extends BaseUser
 
     public function unserialize($serialized)
     {
-        list (
+        list(
             $this->id,
             $this->username,
-            $this->password,
-        ) = unserialize($serialized);
+            $this->password) = unserialize($serialized);
     }
 }
