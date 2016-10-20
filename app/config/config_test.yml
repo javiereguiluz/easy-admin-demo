@@ -14,8 +14,8 @@ web_profiler:
 
 doctrine:
     dbal:
-        driver: "pdo_sqlite"
-        path: "%kernel.root_dir%/../var/data/easyadmin.sqlite"
+        driver: 'pdo_sqlite'
+        path: '%kernel.root_dir%/../var/data/easyadmin.sqlite'
         url: ~
         user: ~
         password: ~

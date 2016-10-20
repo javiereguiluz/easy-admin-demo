@@ -22,7 +22,7 @@ easy_admin:
                     - name
                     - { property: 'price', format: '%.2f' }
                     - { property: 'ean', type: 'string' }
-                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - tags
             show:
@@ -34,7 +34,7 @@ easy_admin:
                     - createdAt
                     - price
                     - { property: 'ean', type: 'string' }
-                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - features
                     - categories
                     - tags

@@ -13,10 +13,10 @@ parameters:
 
 framework:
     #esi:             ~
-    translator:      { fallbacks: [%locale%] }
-    secret:          %secret%
+    translator:      { fallbacks: ['%locale%'] }
+    secret:          '%secret%'
     router:
-        resource: %kernel.root_dir%/config/routing.yml
+        resource: '%kernel.root_dir%/config/routing.yml'
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
@@ -24,7 +24,7 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-    default_locale:  %locale%
+    default_locale:  '%locale%'
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
@@ -36,17 +36,17 @@ framework:
 
 # Twig Configuration
 twig:
-    debug:            %kernel.debug%
-    strict_variables: %kernel.debug%
+    debug:            '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
 
 # Doctrine Configuration
 doctrine:
     dbal:
-        url: %database_url%
+        url: '%database_url%'
         charset:  UTF8
         server_version: 5.6
     orm:
-        auto_generate_proxy_classes: %kernel.debug%
+        auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
@@ -55,11 +55,11 @@ vich_uploader:
     db_driver: orm
     mappings:
         product_images:
-            uri_prefix: %app.path.product_images%
-            upload_destination: %kernel.root_dir%/../web/uploads/images/products
+            uri_prefix: '%app.path.product_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/products'
         user_contracts:
-            uri_prefix: %app.path.user_contracts%
-            upload_destination: %kernel.root_dir%/../web/uploads/files/user/contracts
+            uri_prefix: '%app.path.user_contracts%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/files/user/contracts'
 
 fos_user:
     db_driver: orm
