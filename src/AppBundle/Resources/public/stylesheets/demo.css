@@ -1,3 +1,7 @@
+body#welcome .content-wrapper {
+    margin-left: 0;
+}
+
 body#welcome #main .box {
     margin: 0 auto;
     max-width: 95%;
