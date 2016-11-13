@@ -58,17 +58,11 @@ class Category
      **/
     protected $parent;
 
-    /**
-     * Constructor of the Category class.
-     * (Initialize array field).
-     */
     public function __construct()
     {
-        //Initialize product as a Doctrine Collection
         $this->products = new ArrayCollection();
     }
 
-    /** {@inheritdoc} */
     public function __toString()
     {
         return $this->getName();
@@ -153,9 +147,12 @@ class Category
      */
     public function addProduct($product)
     {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
+        if ($this->products->contains($product)) {
+            return;
         }
+
+        $this->products->add($product);
+        $product->addCategory($this);
     }
 
     /**
@@ -163,6 +160,11 @@ class Category
      */
     public function removeProduct($product)
     {
+        if (!$this->products->contains($product)) {
+            return;
+        }
+
         $this->products->removeElement($product);
+        $product->removeCategory($this);
     }
 }

@@ -13,7 +13,7 @@ easy_admin:
             disabled_actions: ['delete']
             list:
                 actions: [ { name: 'show', icon: 'shopping-basket' } ]
-                fields: ['guid', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']
+                fields: ['guid', 'buyer', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']
             form:
                 fields:
                     - { type: 'group', label: 'Delivery Details', icon: 'truck', css_class: 'col-sm-4' }

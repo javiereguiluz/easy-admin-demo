@@ -139,10 +139,6 @@ class Product
      */
     private $purchasedItems;
 
-    /**
-     * Constructor of the Category class.
-     * (Initialize some fields).
-     */
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -157,11 +153,12 @@ class Product
      */
     public function addCategory($category)
     {
-        $category->addProduct($this);
-
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
+        if ($this->categories->contains($category)) {
+            return;
         }
+
+        $this->categories->add($category);
+        $category->addProduct($this);
     }
 
     /**
@@ -172,8 +169,12 @@ class Product
      */
     public function removeCategory($category)
     {
-        $category->removeProduct($this);
+        if (!$this->categories->contains($category)) {
+            return;
+        }
+
         $this->categories->removeElement($category);
+        $category->removeProduct($this);
     }
 
     /**
