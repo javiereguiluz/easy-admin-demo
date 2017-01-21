@@ -93,7 +93,7 @@ class Purchase
      * Items that have been purchased.
      *
      * @var PurchaseItem[]
-     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="purchase", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="purchase")
      */
     protected $purchasedItems;
 

@@ -4,10 +4,10 @@
 # easy_admin:
 #     entities:
 #         - AppBundle\Entity\Category
-#         - AppBundle\Entity\Image
+#         - AppBundle\Entity\Product
 #         - AppBundle\Entity\Purchase
 #         - AppBundle\Entity\PurchaseItem
-#         - AppBundle\Entity\Product
+#         - AppBundle\Entity\User
 #
 # In this demo application, the configuration is split into several small files
 # to show an alternative way to define the configuration for complex backends.
