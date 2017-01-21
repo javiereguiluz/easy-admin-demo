@@ -20,7 +20,7 @@ easy_admin:
                     - id
                     - enabled
                     - name
-                    - { property: 'price', format: '%.2f' }
+                    - { property: 'price', format: '%.2f', css_class: text-right }
                     - { property: 'ean', type: 'string' }
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - { property: 'createdAt', format: 'j / M / Y' }
