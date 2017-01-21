@@ -20,7 +20,7 @@
         "sensio/framework-extra-bundle"         : "^3.0.2",
         "symfony/monolog-bundle"                : "^2.8",
         "symfony/swiftmailer-bundle"            : "^2.3",
-        "symfony/symfony"                       : "^3.0",
+        "symfony/symfony"                       : "^3.2",
         "vich/uploader-bundle"                  : "dev-master"
     },
     "require-dev": {
