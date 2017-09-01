@@ -26,7 +26,6 @@ framework:
         #assets_version: SomeVersionScheme
     default_locale:  '%locale%'
     trusted_hosts:   ~
-    trusted_proxies: ~
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
@@ -65,6 +64,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\User
+    from_email:
+        address: do-not-reply@example.com
+        sender_name: ACME
 
 swiftmailer:
     transport: null
