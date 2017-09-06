@@ -21,7 +21,7 @@
         "symfony/monolog-bundle"                : "^2.8",
         "symfony/swiftmailer-bundle"            : "^2.3",
         "symfony/symfony"                       : "^3.2",
-        "vich/uploader-bundle"                  : "dev-master"
+        "vich/uploader-bundle"                  : "~1.4@dev"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle"     : "^2.3",
