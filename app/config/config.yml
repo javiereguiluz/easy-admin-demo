@@ -65,6 +65,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\User
+    from_email:
+        address: no-reply@domain.com
+        sender_name: no-reply
 
 swiftmailer:
     transport: null
