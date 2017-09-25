@@ -1,0 +1,5 @@
+---------------------------------------------------------------------------
+
+by yceruto at 2017-09-06T14:29:21Z
+
+Trying to fix `vich/uploader-bundle` behavior in the latest update: the image is not uploaded on submit.
