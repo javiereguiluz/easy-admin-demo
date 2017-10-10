@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
