@@ -7,6 +7,12 @@
         "psr-4": { "": "src/" },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        },
+        "sort-packages": true
+    },
     "require": {
         "php"                                   : ">=5.5.9",
         "doctrine/orm"                          : "^2.5",
