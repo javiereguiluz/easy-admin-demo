@@ -1,0 +1,7 @@
+---------------------------------------------------------------------------
+
+by naitsirch at 2017-10-04T07:19:33Z
+
+Unit tests are failing just because of
+
+> The JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController class is deprecated since version 1.16 and will be removed in 2.0. Use the EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController class instead: 1x
