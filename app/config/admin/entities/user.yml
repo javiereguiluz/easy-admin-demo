@@ -13,6 +13,7 @@ easy_admin:
             list:
                 title: 'Customers'
                 actions: ['-new']
+                help: "<i class=\"fa fa-warning text-danger\" style=\"font-size: 18px\"></i> Don't delete the <strong>john.smith@example.com</strong> user or you won't be able to log in again in the application."
                 fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract.html.twig', base_path: '%app.path.user_contracts%' }]
             show:
                 fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract.html.twig', base_path: '%app.path.user_contracts%' }]
