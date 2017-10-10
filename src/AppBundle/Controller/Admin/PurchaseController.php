@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\Admin;
 
-use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
 /**
  * This is an example of how to use a custom controller for a backend entity.
