@@ -1,0 +1,18 @@
+parameters:
+    locale: 'en'
+    app.path.product_images: /uploads/images/products
+    app.path.user_contracts: /uploads/files/user/contracts
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Repository,Tests}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
