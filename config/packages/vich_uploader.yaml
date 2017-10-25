@@ -1,0 +1,11 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        product_images:
+            uri_prefix: '%app.path.product_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/products'
+        user_contracts:
+            uri_prefix: '%app.path.user_contracts%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/files/user/contracts'
+

@@ -1,0 +1,59 @@
+# This file sets the configuration of the 'Product' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        # the configuration of this entity is very verbose because it's used as
+        # an example to show all the configuration options available for entities
+        # check out the configuration of the other entities to see how concise
+        # can be the configuration of your backend
+        Product:
+            class: App\Entity\Product
+            label: 'Products'
+            list:
+                fields:
+                    - id
+                    - enabled
+                    - name
+                    - { property: 'price', format: '%.2f', css_class: text-right }
+                    - { property: 'ean', type: 'string' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
+                    - { property: 'createdAt', format: 'j / M / Y' }
+                    - tags
+            show:
+                fields:
+                    - id
+                    - { property: 'name', css_class: 'large' }
+                    - description
+                    - { property: 'enabled', label: 'Published' }
+                    - createdAt
+                    - price
+                    - { property: 'ean', type: 'string' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
+                    - features
+                    - categories
+                    - tags
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
+                    - { property: 'name', css_class: 'large' }
+                    - { property: 'description', type: 'ckeditor' }
+                    - { type: 'divider' }
+                    - { property: 'categories', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Product Details', icon: 'cube' }
+                    - { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.' }
+                    - { property: 'price', type: 'number' }
+                    - { type: 'section', label: 'Advanced Settings', icon: 'warning', help: 'Reserved for administrators use' }
+                    - { property: 'enabled', label: 'Published' }
+                    - { property: 'createdAt' }
+                    - { type: 'group', css_class: 'col-sm-8 new-row' }
+                    - { property: 'features' }
+                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { property: 'tags' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }

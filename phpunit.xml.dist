@@ -5,30 +5,27 @@
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="app/autoload.php"
+         bootstrap="vendor/autoload.php"
 >
     <php>
         <ini name="error_reporting" value="-1" />
+        <server name="KERNEL_CLASS" value="App\Kernel" />
+        <!-- ###+ doctrine/doctrine-bundle ### -->
+        <!-- Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url -->
+        <!-- For an SQLite database, use: "sqlite:///%kernel.project_dir%/var/data.db" -->
+        <!-- Set "serverVersion" to your server version to avoid edge-case exceptions and extra database calls -->
+        <!-- <env name="DATABASE_URL" value=""mysql://root@127.0.0.1:3306/symfony?charset=utf8mb4&serverVersion=5.7"" /> -->
+        <!-- ###- doctrine/doctrine-bundle ### -->
+        <!-- ###+ symfony/framework-bundle ### -->
+        <env name="APP_ENV" value="dev" />
+        <env name="APP_DEBUG" value="1" />
+        <env name="APP_SECRET" value="983df4b61d9029bc317dcf63464e4170" />
+        <!-- ###- symfony/framework-bundle ### -->
     </php>
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>src/*Bundle/Tests</directory>
+            <directory>tests/</directory>
         </testsuite>
     </testsuites>
-
-    <php>
-        <server name="KERNEL_DIR" value="app/" />
-    </php>
-
-    <filter>
-        <whitelist>
-            <directory>src</directory>
-            <exclude>
-                <directory>src/*Bundle/Resources</directory>
-                <directory>src/*/*Bundle/Resources</directory>
-                <directory>src/*/Bundle/*Bundle/Resources</directory>
-            </exclude>
-        </whitelist>
-    </filter>
 </phpunit>
