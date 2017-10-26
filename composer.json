@@ -2,65 +2,72 @@
     "name": "javiereguiluz/easy-admin-demo",
     "license": "MIT",
     "type": "project",
-    "description": "A pre-configured application using the \"Symfony Standard Edition\" distribution and the EasyAdminBundle",
+    "description": "A Symfony demo application to showcase the EasyAdmin bundle features.",
     "autoload": {
-        "psr-4": { "": "src/" },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
     },
     "config": {
         "platform": {
-            "php": "5.5.9"
+            "php": "7.0"
         },
         "sort-packages": true
     },
     "require": {
-        "php"                                   : ">=5.5.9",
-        "doctrine/orm"                          : "^2.5",
-        "doctrine/doctrine-bundle"              : "^1.6",
-        "doctrine/doctrine-cache-bundle"        : "^1.2",
-        "egeloen/ckeditor-bundle"               : "^4.0",
-        "friendsofsymfony/user-bundle"          : "~2.0@dev",
-        "incenteev/composer-parameter-handler"  : "^2.0",
-        "javiereguiluz/easyadmin-bundle"        : "^1.12",
-        "sensio/distribution-bundle"            : "^5.0",
-        "sensio/framework-extra-bundle"         : "^3.0.2",
-        "symfony/monolog-bundle"                : "^2.8",
-        "symfony/swiftmailer-bundle"            : "^2.3",
-        "symfony/symfony"                       : "^3.2",
-        "vich/uploader-bundle"                  : "~1.4@dev"
+        "php": "^7.0",
+        "ext-pdo_sqlite": "*",
+        "egeloen/ckeditor-bundle": "dev-master",
+        "javiereguiluz/easyadmin-bundle": "^1.17",
+        "sensio/framework-extra-bundle": "^5.0",
+        "symfony/asset": "^3.3",
+        "symfony/expression-language": "^3.3",
+        "symfony/flex": "^1.0",
+        "symfony/form": "^3.3",
+        "symfony/framework-bundle": "^3.3",
+        "symfony/monolog-bundle": "^3.1",
+        "symfony/orm-pack": "^1.0",
+        "symfony/polyfill-apcu": "^1.6",
+        "symfony/security-bundle": "^3.3",
+        "symfony/security-csrf": "^3.3",
+        "symfony/templating": "^3.3",
+        "symfony/translation": "^3.3",
+        "symfony/twig-bundle": "^3.3",
+        "symfony/validator": "^3.3",
+        "symfony/yaml": "^3.3",
+        "vich/uploader-bundle": "~1.4@dev",
+        "white-october/pagerfanta-bundle": "^1.0"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle"     : "^2.3",
-        "sensio/generator-bundle"               : "^3.0",
-        "symfony/phpunit-bridge"                : "^3.0"
+        "doctrine/doctrine-fixtures-bundle": "^2.3",
+        "symfony/browser-kit": "^3.3",
+        "symfony/debug-bundle": "^3.3",
+        "symfony/dotenv": "^3.3",
+        "symfony/phpunit-bridge": "^3.3",
+        "symfony/profiler-pack": "^1.0",
+        "symfony/var-dumper": "^3.3",
+        "symfony/web-server-bundle": "^3.3"
     },
     "scripts": {
-        "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ],
-        "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ]
+        "auto-scripts": {
+            "make cache-warmup": "script",
+            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
+            "cache:clear": "symfony-cmd"
+        }
+    },
+    "conflict": {
+        "symfony/symfony": "*",
+        "symfony/twig-bundle": "<3.3",
+        "symfony/debug": "<3.3"
     },
     "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
+        "symfony": {
+            "allow-contrib": true
         }
     }
 }
