@@ -45,9 +45,9 @@ class User
     /**
      * @var bool
      *
-     * @ORM\Column(name="isActive", type="boolean")
+     * @ORM\Column(name="active", type="boolean")
      */
-    private $isActive;
+    private $active;
 
     /**
      * It only stores the name of the file which stores the contract subscribed
@@ -76,8 +76,7 @@ class User
 
     public function __construct()
     {
-        parent::__construct();
-
+        $this->active = false;
         $this->purchases = new ArrayCollection();
         $this->isActive = true;
     }
@@ -120,27 +119,27 @@ class User
     }
 
     /**
-     * Set isActive.
+     * Set active.
      *
-     * @param bool $isActive
+     * @param bool $active
      *
      * @return User
      */
-    public function setIsActive($isActive)
+    public function setActive($active)
     {
-        $this->isActive = $isActive;
+        $this->active = $active;
 
         return $this;
     }
 
     /**
-     * Get isActive.
+     * Get active.
      *
      * @return bool
      */
-    public function getIsActive()
+    public function isActive()
     {
-        return $this->isActive;
+        return $this->active;
     }
 
     /**

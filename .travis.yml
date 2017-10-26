@@ -28,5 +28,5 @@ install:
 script:
     - ./bin/console doctrine:database:create --env=test
     - ./bin/console doctrine:schema:create --env=test
-    - ./bin/console doctrine:fixtures:load --env=test --no-interaction
+    - ./bin/console doctrine:fixtures:load --env=test --no-interaction --fixtures=src/DataFixtures
     - ./vendor/bin/simple-phpunit

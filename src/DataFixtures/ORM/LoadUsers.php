@@ -31,13 +31,8 @@ class LoadUsers extends AbstractFixture implements OrderedFixtureInterface, Cont
             $user = new User();
             $user->setUsername('user'.$i);
             $user->setEmail('user'.$i.'@example.com');
-            $user->setRoles(array('ROLE_USER'));
-            $user->setEnabled(true);
+            $user->setActive(true);
             $user->setContract('contract'.($i % 5).'.pdf');
-
-            $plainPassword = 'password'.$i;
-            $encodedPassword = $encoder->encodePassword($user, $plainPassword);
-            $user->setPassword($encodedPassword);
 
             $this->addReference('user-'.$i, $user);
             $manager->persist($user);
@@ -47,10 +42,8 @@ class LoadUsers extends AbstractFixture implements OrderedFixtureInterface, Cont
         $user = new User();
         $user->setUsername('john.smith');
         $user->setEmail('john.smith@example.com');
-        $user->setRoles(array('ROLE_ADMIN'));
-        $user->setEnabled(true);
+        $user->setActive(true);
         $user->setContract('contract0.pdf');
-        $user->setPassword($encoder->encodePassword($user, '1234'));
         $manager->persist($user);
         $manager->flush();
     }
