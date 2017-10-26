@@ -1,0 +1,27 @@
+# This file sets the configuration of the 'Purchase' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        Purchase:
+            class: App\Entity\Purchase
+            controller: App\Controller\Admin\PurchaseController
+            disabled_actions: ['delete']
+            list:
+                actions: [ { name: 'show', icon: 'shopping-basket' } ]
+                fields: ['guid', 'buyer', 'deliveryDate', 'deliveryHour', 'billingAddress', 'purchasedItems', 'total']
+            form:
+                fields:
+                    - { type: 'group', label: 'Delivery Details', icon: 'truck', css_class: 'col-sm-4' }
+                    - deliveryDate
+                    - deliveryHour
+                    - { type: 'divider' }
+                    - 'billingAddress'
+                    - { type: 'group', label: 'Purchase Details', icon: 'shopping-cart', css_class: 'col-sm-4' }
+                    - { property: 'guid', type_options: { 'disabled': true } }
+                    - { property: 'buyer', type: 'easyadmin_autocomplete' }
