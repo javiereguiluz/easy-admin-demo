@@ -5,11 +5,11 @@
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="app/autoload.php"
+         bootstrap="vendor/autoload.php"
 >
     <php>
         <ini name="error_reporting" value="-1" />
-
+        <server name="KERNEL_CLASS" value="App\Kernel" />
         <!-- ###+ doctrine/doctrine-bundle ### -->
         <!-- Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url -->
         <!-- For an SQLite database, use: "sqlite:///%kernel.project_dir%/var/data.db" -->
@@ -23,14 +23,9 @@
         <!-- ###- symfony/framework-bundle ### -->
     </php>
 
-    <filter>
-        <whitelist>
-            <directory>src</directory>
-            <exclude>
-                <directory>src/*Bundle/Resources</directory>
-                <directory>src/*/*Bundle/Resources</directory>
-                <directory>src/*/Bundle/*Bundle/Resources</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
