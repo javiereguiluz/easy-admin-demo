@@ -5,15 +5,14 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity
  * @Vich\Uploadable
  */
-class User implements UserInterface
+class User
 {
     /**
      * @ORM\Id
@@ -21,6 +20,20 @@ class User implements UserInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=64)
+     */
+    protected $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $email;
 
     /**
      * @var Purchase[]
@@ -69,24 +82,41 @@ class User implements UserInterface
         $this->isActive = true;
     }
 
-    public function eraseCredentials()
+    public function getId()
     {
-        // do nothing
+        return $this->id;
     }
 
-    public function getSalt()
+    /**
+     * @param string $username
+     */
+    public function setUsername($username)
     {
-        return null;
+        $this->username = $username;
     }
 
-    public function getPassword()
-    {
-        return null;
-    }
-
+    /**
+     * @return string
+     */
     public function getUsername()
     {
-        return null;
+        return $this->username;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -159,27 +189,5 @@ class User implements UserInterface
     public function getContract()
     {
         return $this->contract;
-    }
-
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-        ));
-    }
-
-    public function unserialize($serialized)
-    {
-        list(
-            $this->id,
-            $this->username,
-            $this->password) = unserialize($serialized);
     }
 }
