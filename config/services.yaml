@@ -9,6 +9,12 @@ services:
         autoconfigure: true
         public: false
 
+    # TEMPORARY FIX until this is solved: https://github.com/egeloen/IvoryCKEditorBundle/issues/323
+    ivory_ck_editor.renderer.json_builder:
+        class: Ivory\JsonBuilder\JsonBuilder
+        arguments: ['@property_accessor']
+        public: true
+
     App\:
         resource: '../src/*'
         exclude: '../src/{Entity,Migrations,Repository,Tests}'
