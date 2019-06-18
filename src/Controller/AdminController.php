@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends EasyAdminController
 {

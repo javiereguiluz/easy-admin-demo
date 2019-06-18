@@ -20,6 +20,6 @@ easy_admin:
             - { label: 'menu.customer', entity: 'User', icon: 'users' }
             - { label: 'menu.purchase', entity: 'Purchase', icon: 'credit-card', params: { sortField: 'deliveryDate' } }
             - { label: 'menu.about' }
-            - { label: 'menu.about.home', url: 'https://github.com/javiereguiluz/EasyAdminBundle', icon: 'home', target: '_blank' }
-            - { label: 'menu.about.docs', url: 'https://github.com/javiereguiluz/EasyAdminBundle#getting-started-guide', icon: 'book', target: '_blank' }
-            - { label: 'menu.about.issues', url: 'https://github.com/javiereguiluz/EasyAdminBundle/issues', icon: 'github', target: '_blank' }
+            - { label: 'menu.about.home', url: 'https://github.com/EasyCorp/EasyAdminBundle', icon: 'home', target: '_blank' }
+            - { label: 'menu.about.docs', url: 'https://symfony.com/doc/current/bundles/EasyAdminBundle', icon: 'book', target: '_blank' }
+            - { label: 'menu.about.issues', url: 'https://github.com/EasyCorp/EasyAdminBundle/issues', icon: 'github', target: '_blank' }

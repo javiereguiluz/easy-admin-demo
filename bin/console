@@ -3,31 +3,40 @@
 
 use App\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Debug\Debug;
 
-umask(0000);
-set_time_limit(0);
-
-require __DIR__.'/../vendor/autoload.php';
-
-if (!class_exists(Application::class)) {
-    throw new \RuntimeException('You need to add "symfony/framework-bundle" as a Composer dependency.');
+if (false === in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
+    echo 'Warning: The console should be invoked via the CLI version of PHP, not the '.\PHP_SAPI.' SAPI'.\PHP_EOL;
 }
 
-if (!isset($_SERVER['APP_ENV'])) {
-    (new Dotenv())->load(__DIR__.'/../.env');
+set_time_limit(0);
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+if (!class_exists(Application::class)) {
+    throw new RuntimeException('You need to add "symfony/framework-bundle" as a Composer dependency.');
 }
 
 $input = new ArgvInput();
-$env = $input->getParameterOption(['--env', '-e'], $_SERVER['APP_ENV'] ?? 'dev');
-$debug = ($_SERVER['APP_DEBUG'] ?? true) !== '0' && !$input->hasParameterOption(['--no-debug', '']);
-
-if ($debug && class_exists(Debug::class)) {
-    Debug::enable();
+if (null !== $env = $input->getParameterOption(['--env', '-e'], null, true)) {
+    putenv('APP_ENV='.$_SERVER['APP_ENV'] = $_ENV['APP_ENV'] = $env);
 }
 
-$kernel = new Kernel($env, $debug);
+if ($input->hasParameterOption('--no-debug', true)) {
+    putenv('APP_DEBUG='.$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = '0');
+}
+
+require dirname(__DIR__).'/config/bootstrap.php';
+
+if ($_SERVER['APP_DEBUG']) {
+    umask(0000);
+
+    if (class_exists(Debug::class)) {
+        Debug::enable();
+    }
+}
+
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $application = new Application($kernel);
 $application->run($input);
