@@ -1,13 +1,13 @@
 <?php
 
-namespace App\DataFixtures\ORM;
+namespace App\DataFixtures;
 
-use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Category;
 
-class LoadCategories extends AbstractFixture implements OrderedFixtureInterface
+class LoadCategories extends Fixture implements OrderedFixtureInterface
 {
     public function getOrder()
     {

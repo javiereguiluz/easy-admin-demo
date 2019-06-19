@@ -1,6 +1,9 @@
 homepage:
     path: /
-    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: easyadmin, permanent: true }
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: easyadmin
+        permanent: true
 
 backend:
     resource: '../src/Controller/AdminController.php'

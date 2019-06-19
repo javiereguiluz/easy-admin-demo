@@ -1,0 +1,90 @@
+{
+    "doctrine/data-fixtures": {
+        "version": "v1.3.1"
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "fc52d86631a6dfd9fdf3381d0b7e3df2069e51b3"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
+        ]
+    },
+    "doctrine/event-manager": {
+        "version": "v1.0.0"
+    },
+    "doctrine/persistence": {
+        "version": "1.1.1"
+    },
+    "doctrine/reflection": {
+        "version": "v1.0.0"
+    },
+    "easycorp/easyadmin-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "0a51040a43c6f2172a3a0135cd15daf2043905d7"
+        },
+        "files": [
+            "config/packages/easy_admin.yaml",
+            "config/routes/easy_admin.yaml"
+        ]
+    },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
+        },
+        "files": [
+            "config/packages/fos_ckeditor.yaml"
+        ]
+    },
+    "symfony/cache-contracts": {
+        "version": "v1.1.1"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v1.1.1"
+    },
+    "symfony/mime": {
+        "version": "v4.3.1"
+    },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
+    },
+    "symfony/polyfill-php72": {
+        "version": "v1.11.0"
+    },
+    "symfony/polyfill-php73": {
+        "version": "v1.11.0"
+    },
+    "symfony/security-core": {
+        "version": "v4.3.1"
+    },
+    "symfony/security-csrf": {
+        "version": "v4.3.1"
+    },
+    "symfony/security-guard": {
+        "version": "v4.3.1"
+    },
+    "symfony/security-http": {
+        "version": "v4.3.1"
+    },
+    "symfony/service-contracts": {
+        "version": "v1.1.2"
+    },
+    "symfony/translation-contracts": {
+        "version": "v1.1.2"
+    },
+    "symfony/var-exporter": {
+        "version": "v4.3.1"
+    }
+}

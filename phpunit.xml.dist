@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- http://phpunit.de/manual/4.1/en/appendixes.configuration.html -->
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.5/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="vendor/autoload.php"
+         bootstrap="config/bootstrap.php"
 >
     <php>
         <ini name="error_reporting" value="-1" />
-        <server name="KERNEL_CLASS" value="App\Kernel" />
-        <!-- ###+ doctrine/doctrine-bundle ### -->
-        <!-- Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url -->
-        <!-- For an SQLite database, use: "sqlite:///%kernel.project_dir%/var/data.db" -->
-        <!-- Set "serverVersion" to your server version to avoid edge-case exceptions and extra database calls -->
-        <!-- <env name="DATABASE_URL" value=""mysql://root@127.0.0.1:3306/symfony?charset=utf8mb4&serverVersion=5.7"" /> -->
-        <!-- ###- doctrine/doctrine-bundle ### -->
-        <!-- ###+ symfony/framework-bundle ### -->
-        <env name="APP_ENV" value="dev" />
-        <env name="APP_DEBUG" value="1" />
-        <env name="APP_SECRET" value="983df4b61d9029bc317dcf63464e4170" />
-        <!-- ###- symfony/framework-bundle ### -->
+        <server name="APP_ENV" value="test" force="true" />
+        <server name="SHELL_VERBOSITY" value="-1" />
     </php>
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>tests/</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src</directory>
+        </whitelist>
+    </filter>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+    </listeners>
 </phpunit>

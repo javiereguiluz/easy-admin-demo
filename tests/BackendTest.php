@@ -3,55 +3,52 @@
 namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\Cookie;
 
 class BackendTest extends WebTestCase
 {
     /**
      * @dataProvider queryParametersProvider
      */
-    public function testBackendPagesLoadCorrectly($queryParameters)
+    public function testBackendPagesLoadCorrectly(array $queryParameters): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/admin/?'.http_build_query($queryParameters));
-
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        static::createClient()->request('GET', '/admin/', $queryParameters);
+        self::assertResponseIsSuccessful();
     }
 
-    public function queryParametersProvider()
+    public function queryParametersProvider(): array
     {
-        return array(
-            array(
-                array('action' => 'list', 'entity' => 'Category'),
-            ),
-            array(
-                array('action' => 'list', 'entity' => 'Category', 'page' => 2),
-            ),
-            array(
-                array('action' => 'search', 'entity' => 'Category', 'query' => 'cat'),
-            ),
-            array(
-                array('action' => 'show', 'entity' => 'Category', 'id' => 1),
-            ),
-            array(
-                array('action' => 'edit', 'entity' => 'Category', 'id' => 1),
-            ),
+        return [
+            [
+                ['action' => 'list', 'entity' => 'Category'],
+            ],
+            [
+                ['action' => 'list', 'entity' => 'Category', 'page' => 2],
+            ],
+            [
+                ['action' => 'search', 'entity' => 'Category', 'query' => 'cat'],
+            ],
+            [
+                ['action' => 'show', 'entity' => 'Category', 'id' => 1],
+            ],
+            [
+                ['action' => 'edit', 'entity' => 'Category', 'id' => 1],
+            ],
 
-            array(
-                array('action' => 'list', 'entity' => 'Product'),
-            ),
-            array(
-                array('action' => 'list', 'entity' => 'Product', 'page' => 2),
-            ),
-            array(
-                array('action' => 'search', 'entity' => 'Product', 'query' => 'lorem'),
-            ),
-            array(
-                array('action' => 'show', 'entity' => 'Product', 'id' => 1),
-            ),
-            array(
-                array('action' => 'edit', 'entity' => 'Product', 'id' => 1),
-            ),
-        );
+            [
+                ['action' => 'list', 'entity' => 'Product'],
+            ],
+            [
+                ['action' => 'list', 'entity' => 'Product', 'page' => 2],
+            ],
+            [
+                ['action' => 'search', 'entity' => 'Product', 'query' => 'lorem'],
+            ],
+            [
+                ['action' => 'show', 'entity' => 'Product', 'id' => 1],
+            ],
+            [
+                ['action' => 'edit', 'entity' => 'Product', 'id' => 1],
+            ],
+        ];
     }
 }

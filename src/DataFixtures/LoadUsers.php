@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataFixtures\ORM;
+namespace App\DataFixtures;
 
-use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\User;
 
-class LoadUsers extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadUsers extends Fixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     private $container;
 

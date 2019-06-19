@@ -11,8 +11,6 @@
 easy_admin:
     site_name: 'ACME Backend'
     design:
-        form_theme:   'vertical'
-        color_scheme: 'dark'
         assets:
             css:
                 - '/bundles/app/stylesheets/demo.css'
