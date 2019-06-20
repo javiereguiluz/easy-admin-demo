@@ -44,7 +44,7 @@
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/yaml": "*",
-        "vich/uploader-bundle": "^1.9",
+        "vich/uploader-bundle": "1.8.6",
         "white-october/pagerfanta-bundle": "^1.0"
     },
     "require-dev": {
