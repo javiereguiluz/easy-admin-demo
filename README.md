@@ -38,6 +38,11 @@ $ easy-admin-demo/
 $ ./vendor/bin/simple-phpunit
 ```
 
+Screenshot
+----------
+
+![Screenshot of the EasyAdmin Demo app](screenshot.png)
+
 [1]: https://github.com/EasyCorp/EasyAdminBundle
 [2]: https://symfony.com
 [3]: https://symfony.com/doc/current/reference/requirements.html
