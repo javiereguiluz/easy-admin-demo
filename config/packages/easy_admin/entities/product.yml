@@ -25,6 +25,7 @@ easy_admin:
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - tags
+                filters: ['enabled', 'name', 'price']
             show:
                 fields:
                     - id
