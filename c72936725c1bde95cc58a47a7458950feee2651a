@@ -1,0 +1,7 @@
+---------------------------------------------------------------------------
+
+by javiereguiluz at 2019-08-02T14:27:09Z
+
+The original EasyAdmin demo tried to use all possible data types to fully test all features ... but I think that's a mistake and in the entities you can see some weird data because of that and you can suffer from bugs like this.
+
+So, thanks for fixing this!
