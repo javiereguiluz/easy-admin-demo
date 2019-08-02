@@ -77,9 +77,9 @@ class Purchase
      * The customer billing address.
      *
      * @var array
-     * @ORM\Column(type="json_array")
+     * @ORM\Column(type="text")
      */
-    protected $billingAddress = array();
+    protected $billingAddress;
 
     /**
      * The user who made the purchase.
@@ -113,7 +113,7 @@ class Purchase
     /**
      * Set the address where the customer want its billing.
      *
-     * @param array $billingAddress
+     * @param string $billingAddress
      */
     public function setBillingAddress($billingAddress)
     {
@@ -121,7 +121,7 @@ class Purchase
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getBillingAddress()
     {
