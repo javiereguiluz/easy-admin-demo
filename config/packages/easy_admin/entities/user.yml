@@ -15,12 +15,12 @@ easy_admin:
                 actions: ['-new']
                 fields: ['id', 'active', 'username', 'email', 'purchases', { property: 'contract', template: 'easy_admin/User/contract.html.twig', base_path: '%app.path.user_contracts%' }]
             show:
-                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'easy_admin/User/contract.html.twig', base_path: '%app.path.user_contracts%' }]
+                fields: ['id', 'active', 'username', 'email', 'purchases', { property: 'contract', template: 'easy_admin/User/contract.html.twig', base_path: '%app.path.user_contracts%' }]
             form:
                 fields:
                     - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-4' }
                     - { property: 'username' }
-                    - { property: 'isActive' }
+                    - { property: 'active' }
                     - { type: 'group', label: 'Contact Information', icon: 'envelope-o', css_class: 'col-sm-4' }
                     - { property: 'email' }
                     - { type: 'group', label: 'Legal Information', icon: 'briefcase', css_class: 'col-sm-4' }

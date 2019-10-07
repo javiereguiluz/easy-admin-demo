@@ -78,7 +78,6 @@ class User
     {
         $this->active = false;
         $this->purchases = new ArrayCollection();
-        $this->isActive = true;
     }
 
     public function getId()
