@@ -14,10 +14,8 @@ ENV PATH="$HOME/.symfony/bin:$PATH"
 
 RUN docker-php-ext-install zip
 
-#RUN composer.phar update
+RUN php -d memory_limit=-1 /usr/bin/composer.phar require doctrine/annotations
 
-RUN composer.phar require symfony/config
-
-RUN composer.phar install
+RUN php -d memory_limit=-1 /usr/bin/composer.phar install
 
 ENTRYPOINT php bin/console server:run 0.0.0.0:8000
