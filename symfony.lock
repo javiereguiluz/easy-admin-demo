@@ -96,6 +96,9 @@
     "doctrine/sql-formatter": {
         "version": "1.1.0"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.0"
+    },
     "easycorp/easyadmin-bundle": {
         "version": "2.0",
         "recipe": {
@@ -132,6 +135,9 @@
     },
     "ocramius/package-versions": {
         "version": "1.4.2"
+    },
+    "nikic/php-parser": {
+        "version": "v4.4.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"
@@ -207,6 +213,9 @@
     },
     "symfony/dependency-injection": {
         "version": "v5.1.0"
+    },
+    "symfony/deprecation-contracts": {
+        "version": "v2.1.2"
     },
     "symfony/deprecation-contracts": {
         "version": "v2.1.2"
@@ -332,7 +341,13 @@
     "symfony/polyfill-intl-grapheme": {
         "version": "v1.17.0"
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.17.0"
+    },
     "symfony/polyfill-intl-icu": {
+        "version": "v1.17.0"
+    },
+    "symfony/polyfill-intl-normalizer": {
         "version": "v1.17.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -402,6 +417,9 @@
     },
     "symfony/string": {
         "version": "v5.1.0"
+    },
+    "symfony/string": {
+        "version": "v5.0.8"
     },
     "symfony/templating": {
         "version": "v5.1.0"
