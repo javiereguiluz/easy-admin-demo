@@ -13,4 +13,7 @@ easy_admin:
     design:
         assets:
             css:
-                - '/bundles/app/stylesheets/demo.css'
+                - '/stylesheets/demo.css'
+        form_theme:
+            - '@EasyAdmin/form/bootstrap_4.html.twig'
+            - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
