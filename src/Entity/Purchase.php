@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Purchase
 {
     /**
-     * The purchase increment id. This identifier will be use in all communication between the customer and the store.
+     * The purchase increment id. This identifier will be use in all communication between the user and the store.
      *
      * @var string
      * @ORM\Column(type="string", name="id", nullable=false)
@@ -50,7 +50,7 @@ class Purchase
     protected $deliveryDate = null;
 
     /**
-     * The purchase datetime in the customer timezone.
+     * The purchase datetime in the user timezone.
      *
      * @var \DateTime
      * @ORM\Column(type="datetimetz")
@@ -66,7 +66,7 @@ class Purchase
     protected $shipping = null;
 
     /**
-     * The customer preferred time of the day for the delivery.
+     * The user preferred time of the day for the delivery.
      *
      * @var \DateTime|null
      * @ORM\Column(type="time", nullable=true)
@@ -74,7 +74,7 @@ class Purchase
     protected $deliveryHour = null;
 
     /**
-     * The customer billing address.
+     * The user billing address.
      *
      * @var array
      * @ORM\Column(type="text")
@@ -111,7 +111,7 @@ class Purchase
     }
 
     /**
-     * Set the address where the customer want its billing.
+     * Set the address where the user want its billing.
      *
      * @param string $billingAddress
      */
