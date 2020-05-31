@@ -362,6 +362,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.17.0"
     },
+    "symfony/polyfill-php80": {
+        "version": "v1.17.0"
+    },
     "symfony/profiler-pack": {
         "version": "v1.0.4"
     },
