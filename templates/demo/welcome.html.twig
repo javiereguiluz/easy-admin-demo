@@ -1,23 +1,18 @@
-{% extends '@EasyAdmin/default/layout.html.twig' %}
+{% extends '@EasyAdmin/page/content.html.twig' %}
 
-{% block page_title 'Welcome to the EasyAdmin Demo application' %}
-
-{% block body_id 'welcome' %}
-
-{% block main %}
-
-    <div class="box">
-        <h1>{{ block('page_title') }}</h1>
+{% block content_body %}
+    <div style="max-width: 480px">
+        <h1 style="font-size: 21px">Welcome to the EasyAdmin Demo application</h1>
 
         <p>
-            This is a <strong>sample application</strong> developed to showcase the
-            main features of <a href="https://github.com/javiereguiluz/EasyAdminBundle">EasyAdmin</a>,
-            the new (and simple) admin generator for Symfony applications.
+            This is a <strong>sample application</strong> developed with
+            <a href="https://github.com/EasyCorp/EasyAdminBundle">EasyAdmin</a>,
+            which creates administration backends for your Symfony applications with unprecedented simplicity.
         </p>
 
         <p>
             Click on any of the links in the main menu to start using this backend.
-            Open the <code>config/easy_admin</code> directory to learn how this
+            Open the <code>src/Controller/Admin/</code> directory to learn how this
             backend was created.
         </p>
 
@@ -28,5 +23,4 @@
             to create your own backend.
         </p>
     </div>
-
 {% endblock %}

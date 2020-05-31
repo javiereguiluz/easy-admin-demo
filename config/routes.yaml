@@ -1,11 +1,6 @@
 homepage:
     path: /
     defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
-        route: easyadmin
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirect
+        path: /admin
         permanent: true
-
-backend:
-    resource: '../src/Controller/AdminController.php'
-    prefix: /admin
-    type: annotation

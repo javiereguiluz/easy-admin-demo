@@ -6,49 +6,26 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class BackendTest extends WebTestCase
 {
-    /**
-     * @dataProvider queryParametersProvider
-     */
-    public function testBackendPagesLoadCorrectly(array $queryParameters): void
+    public function testBackendPagesLoadCorrectly(): void
     {
-        static::createClient()->request('GET', '/admin/', $queryParameters);
-        self::assertResponseIsSuccessful();
-    }
+        $client = static::createClient();
 
-    public function queryParametersProvider(): array
-    {
-        return [
-            [
-                ['action' => 'list', 'entity' => 'Category'],
-            ],
-            [
-                ['action' => 'list', 'entity' => 'Category', 'page' => 2],
-            ],
-            [
-                ['action' => 'search', 'entity' => 'Category', 'query' => 'cat'],
-            ],
-            [
-                ['action' => 'show', 'entity' => 'Category', 'id' => 1],
-            ],
-            [
-                ['action' => 'edit', 'entity' => 'Category', 'id' => 1],
-            ],
-
-            [
-                ['action' => 'list', 'entity' => 'Product'],
-            ],
-            [
-                ['action' => 'list', 'entity' => 'Product', 'page' => 2],
-            ],
-            [
-                ['action' => 'search', 'entity' => 'Product', 'query' => 'lorem'],
-            ],
-            [
-                ['action' => 'show', 'entity' => 'Product', 'id' => 1],
-            ],
-            [
-                ['action' => 'edit', 'entity' => 'Product', 'id' => 1],
-            ],
+        $urls = [
+            '/admin?crudAction=index&crudId=04488af',
+            '/admin?crudAction=index&crudId=04488af&page=2',
+            '/admin?crudAction=index&crudId=04488af&query=categ',
+            '/admin?crudAction=detail&crudId=04488af&entityId=1',
+            '/admin?crudAction=edit&crudId=04488af&entityId=1',
+            '/admin?crudAction=index&crudId=d76a8a6',
+            '/admin?crudAction=index&crudId=d76a8a6&page=2',
+            '/admin?crudAction=index&crudId=d76a8a6&query=lorem',
+            '/admin?crudAction=detail&crudId=d76a8a6&entityId=1',
+            '/admin?crudAction=edit&crudId=d76a8a6&entityId=1',
         ];
+
+        foreach ($urls as $url) {
+            $client->request('GET',  $url);
+            self::assertResponseIsSuccessful();
+        }
     }
 }
