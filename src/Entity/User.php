@@ -5,12 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Table(name="user")
  * @ORM\Entity
- * @Vich\Uploadable
  */
 class User
 {
@@ -58,16 +56,6 @@ class User
      * @var string
      */
     private $contract;
-
-    /**
-     * This unmapped property stores the binary contents of the file which stores
-     * the contract subscribed by the user.
-     *
-     * @Vich\UploadableField(mapping="user_contracts", fileNameProperty="contract")
-     *
-     * @var File
-     */
-    private $contractFile;
 
     public function __toString()
     {
