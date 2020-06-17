@@ -109,21 +109,6 @@
             "config/routes/easy_admin.yaml"
         ]
     },
-    "friendsofsymfony/ckeditor-bundle": {
-        "version": "2.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "2.0",
-            "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
-        },
-        "files": [
-            "config/packages/fos_ckeditor.yaml"
-        ]
-    },
-    "jms/metadata": {
-        "version": "2.2.0"
-    },
     "monolog/monolog": {
         "version": "2.1.0"
     },
@@ -401,7 +386,7 @@
         "version": "v5.1.0"
     },
     "symfony/string": {
-        "version": "v5.1.0"
+        "version": "v5.0.8"
     },
     "symfony/templating": {
         "version": "v5.1.0"
@@ -473,22 +458,10 @@
         ]
     },
     "symfony/yaml": {
-        "version": "v5.1.0"
+        "version": "v5.1.2"
     },
     "twig/twig": {
         "version": "v3.0.3"
-    },
-    "vich/uploader-bundle": {
-        "version": "1.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.5",
-            "ref": "c4f5755b37fb65b9c6a3cbdae91205c15a137ed4"
-        },
-        "files": [
-            "config/packages/vich_uploader.yaml"
-        ]
     },
     "zendframework/zend-code": {
         "version": "3.4.1"

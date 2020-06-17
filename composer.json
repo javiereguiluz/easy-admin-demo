@@ -25,7 +25,6 @@
     "require": {
         "php": "^7.2.9",
         "ext-pdo_sqlite": "*",
-        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "easycorp/easyadmin-bundle": "dev-master",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "*",
@@ -43,8 +42,6 @@
         "symfony/translation": "*",
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
-        "symfony/yaml": "*",
-        "vich/uploader-bundle": "^1.11",
         "babdev/pagerfanta-bundle": "^2.0"
     },
     "require-dev": {
