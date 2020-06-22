@@ -25,7 +25,7 @@ before_install:
     - composer selfupdate
 
 install:
-    - composer update --prefer-dist --no-interaction
+    - composer install --prefer-dist --no-interaction
 
 script:
     - ./bin/console doctrine:database:create

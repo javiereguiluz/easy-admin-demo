@@ -25,7 +25,8 @@
     "require": {
         "php": "^7.2.9",
         "ext-pdo_sqlite": "*",
-        "easycorp/easyadmin-bundle": "dev-master",
+        "babdev/pagerfanta-bundle": "^2.0",
+        "easycorp/easyadmin-bundle": "^3.0",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "*",
         "symfony/dotenv": "*",
@@ -42,7 +43,7 @@
         "symfony/translation": "*",
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
-        "babdev/pagerfanta-bundle": "^2.0"
+        "symfony/yaml": "5.1.*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.2",
@@ -54,7 +55,6 @@
     },
     "scripts": {
         "auto-scripts": {
-            "ckeditor:install": "symfony-cmd",
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
