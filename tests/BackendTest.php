@@ -6,26 +6,30 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class BackendTest extends WebTestCase
 {
-    public function testBackendPagesLoadCorrectly(): void
+    /**
+     * @dataProvider urlsProvider
+     */
+    public function testBackendPagesLoadCorrectly(string $url): void
     {
         $client = static::createClient();
 
-        $urls = [
-            '/admin?crudAction=index&crudId=04488af',
-            '/admin?crudAction=index&crudId=04488af&page=2',
-            '/admin?crudAction=index&crudId=04488af&query=categ',
-            '/admin?crudAction=detail&crudId=04488af&entityId=1',
-            '/admin?crudAction=edit&crudId=04488af&entityId=1',
-            '/admin?crudAction=index&crudId=d76a8a6',
-            '/admin?crudAction=index&crudId=d76a8a6&page=2',
-            '/admin?crudAction=index&crudId=d76a8a6&query=lorem',
-            '/admin?crudAction=detail&crudId=d76a8a6&entityId=1',
-            '/admin?crudAction=edit&crudId=d76a8a6&entityId=1',
-        ];
+        $client->request('GET',  $url);
+        self::assertResponseIsSuccessful();
+    }
 
-        foreach ($urls as $url) {
-            $client->request('GET',  $url);
-            self::assertResponseIsSuccessful();
-        }
+    public function urlsProvider(): array
+    {
+        return [
+            ['/admin?crudAction=index&crudId=1885af8'],
+            ['/admin?crudAction=index&crudId=1885af8&page=2'],
+            ['/admin?crudAction=index&crudId=1885af8&query=categ'],
+            ['/admin?crudAction=detail&crudId=1885af8&entityId=1'],
+            ['/admin?crudAction=edit&crudId=1885af8&entityId=1'],
+            ['/admin?crudAction=index&crudId=0243a3c'],
+            ['/admin?crudAction=index&crudId=0243a3c&page=2'],
+            ['/admin?crudAction=index&crudId=0243a3c&query=lorem'],
+            ['/admin?crudAction=detail&crudId=0243a3c&entityId=1'],
+            ['/admin?crudAction=edit&crudId=0243a3c&entityId=1'],
+        ];
     }
 }

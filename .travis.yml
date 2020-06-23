@@ -18,16 +18,11 @@ env:
 matrix:
     fast_finish: true
 
-before_install:
-    - phpenv config-rm xdebug.ini
-    - echo memory_limit = -1 >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-    - echo opcache.enable_cli = 1 >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-    - composer selfupdate
-
 install:
     - composer install --prefer-dist --no-interaction
 
 script:
+    - ./bin/console doctrine:database:drop --force
     - ./bin/console doctrine:database:create
     - ./bin/console doctrine:schema:create
     - ./bin/console doctrine:fixtures:load --no-interaction
