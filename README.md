@@ -18,7 +18,7 @@ How to install this project
   1. `cd easy-admin-demo/`
   1. `composer install`
   1. `symfony server:start`
-  1. Browse `http://127.0.0.1:8000/admin/`
+  1. Browse `https://127.0.0.1:8000/admin/`
 
 The project comes with an SQLite sample database, but you can also create your
 own database and load the fixtures data:
