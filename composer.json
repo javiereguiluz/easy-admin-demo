@@ -25,7 +25,9 @@
     "require": {
         "php": "^7.2.9",
         "ext-pdo_sqlite": "*",
+        "babdev/pagerfanta-bundle": "^2.0",
         "easycorp/easyadmin-bundle": "dev-master",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "*",
         "symfony/dotenv": "*",
@@ -41,8 +43,7 @@
         "symfony/templating": "*",
         "symfony/translation": "*",
         "symfony/twig-bundle": "*",
-        "symfony/validator": "*",
-        "babdev/pagerfanta-bundle": "^2.0"
+        "symfony/validator": "*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.2",
