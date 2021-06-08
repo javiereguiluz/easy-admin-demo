@@ -7,6 +7,7 @@ parameters:
     locale: 'en'
     app.path.product_images: '/uploads/images/products'
     app.path.user_contracts: '/uploads/files/user/contracts'
+    app.upload_dest: '%kernel.project_dir%/public/%app.path.product_images%'
 
 services:
     # default configuration for services in *this* file

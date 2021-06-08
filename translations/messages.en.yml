@@ -91,3 +91,7 @@ Legal Information: Legal Information
 Product Details: Product Details
 Purchase Details: Purchase Details
 Transactions History: Transactions History
+
+form:
+    label:
+        delete: Delete file
