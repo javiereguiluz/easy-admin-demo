@@ -13,6 +13,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Class Product.
@@ -20,6 +22,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * @author MacFJA
  *
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -68,11 +71,17 @@ class Product
     /**
      * It only stores the name of the image associated with the product.
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
     private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * Features of the product.
@@ -262,6 +271,9 @@ class Product
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
+        if ($image instanceof UploadedFile) {
+            $this->setImage($image->getClientOriginalName());
+        }
     }
 
     /**

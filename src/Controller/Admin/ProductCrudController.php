@@ -16,9 +16,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductCrudController extends AbstractCrudController
 {
+    private $params;
+
+    public function __construct(ParameterBagInterface $params) {
+        $this->params = $params;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Product::class;
@@ -44,7 +52,8 @@ class ProductCrudController extends AbstractCrudController
         $features = ArrayField::new('features');
         $tags = ArrayField::new('tags');
         $id = IntegerField::new('id', 'ID');
-        $image = ImageField::new('image')->setBasePath('uploads/images/products');
+        $image = ImageField::new('image')->setBasePath('uploads/images/products')->setUploadDir($this->params->get('app.upload_dest'));
+        $imageFile = Field::new('imageFile')->setFormType(VichImageType::class);
 
         if (Crud::PAGE_INDEX === $pageName) {
             return [$id, $enabled, $name, $price, $ean, $image, $createdAt->setFormat('short', 'short'), $tags];
@@ -60,8 +69,7 @@ class ProductCrudController extends AbstractCrudController
             FormField::addPanel(),
             $tags,
             FormField::addPanel('Attachments'),
-            // TODO: fix this, which doesn't work for some unknown reason
-            //$imageFile,
+            $imageFile,
         ];
     }
 }
